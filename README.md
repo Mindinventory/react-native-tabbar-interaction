@@ -1,6 +1,15 @@
 # React Native Tabbar Interaction
 
-A tabbar component for React Native
+Beautiful Tabbar Interaction with Sliding Inset FABs,
+made with React Native.
+
+
+Check it out on Béhance (https://www.behance.net/gallery/68043143/Tab-bar-interaction-with-animated-icons)
+
+Check it out on Dribbble (https://dribbble.com/shots/4844696-Tab-bar-interaction-with-animated-icons)
+
+<img src="https://cdn.dribbble.com/users/1233499/screenshots/4844696/preview.gif" >
+
 
 ## Installation
 `npm i react-native-tab-bar-interaction`
@@ -8,15 +17,6 @@ A tabbar component for React Native
 Android: `react-native run-android`
 
 iPhone: `react-native run-ios`
-
-## Preview
-![](./ReactNative-Tab-iOS.gif)
-
-## Description
-Beautiful React native tabbar Interaction inspired by [this](https://dribbble.com/shots/4844696-Tab-bar-interaction-with-animated-icons) dribble from [Ketan Rajput](https://twitter.com/Ketan_MI)
-
-![image](https://cdn.dribbble.com/users/1233499/screenshots/4844696/preview.gif)
-
 
 
 # Usage
