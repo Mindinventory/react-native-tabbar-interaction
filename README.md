@@ -75,6 +75,14 @@ import TabBar from "react-native-tab-bar-interaction";
 * `react-native-svg`
 
 
+# Changelog
+
+### Version: 1.0
+
+  * Initial Build
+
+
+
 # LICENSE!
 
 React-native-tabbar-interaction is [MIT-licensed](https://github.com/Mindinventory/react-native-tabbar-interaction/blob/master/LICENSE).
