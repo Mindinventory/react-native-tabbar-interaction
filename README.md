@@ -4,6 +4,8 @@ A tabbar component for React Native
 
 ## Installation
 `npm i react-native-tab-bar-interaction`
+Android: `react-native run-android`
+iPhone: `react-native run-ios`
 
 ## Preview
 ![](./ReactNative-Tab-iOS.gif)
