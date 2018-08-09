@@ -1,4 +1,4 @@
-# react-native-tabbar-interaction
+# React Native Tabbar Interaction
 
 A tabbar component for React Native
 
