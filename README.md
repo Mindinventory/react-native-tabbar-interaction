@@ -11,7 +11,7 @@ Check it out on Dribbble (https://dribbble.com/shots/4844696-Tab-bar-interaction
 <img src="https://cdn.dribbble.com/users/1233499/screenshots/4844696/preview.gif" >
 
 
-## Installation
+# Installation
 `npm i react-native-tab-bar-interaction`
 
 Android: `react-native run-android`
@@ -61,7 +61,7 @@ import TabBar from "react-native-tab-bar-interaction";
   }
 ```
 
-### Component props
+## Component props
 
 | prop | value | required/optional | description |
 | --- | --- | --- | --- |
