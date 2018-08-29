@@ -8,6 +8,8 @@ Check it out on Béhance (https://www.behance.net/gallery/68043143/Tab-bar-inter
 
 Check it out on Dribbble (https://dribbble.com/shots/4844696-Tab-bar-interaction-with-animated-icons)
 
+Read about how we made this on our blog (https://www.mindinventory.com/blog/create-tabbar-plugin-with-react-native/)
+
 <img src="https://cdn.dribbble.com/users/1233499/screenshots/4844696/preview.gif" >
 
 
