@@ -60,17 +60,16 @@ export default class TabBar extends Component{
 
         this.state.circleRadius.addListener( (circleRadius) => {
             this._myCircle.setNativeProps({ cx: circleRadius.value.toString() });
-    });
+        });
 
         this.state.pathD.addListener( a => {
-
             this.setState({
-            pathX: a.value.toString(),
-            pathY: (318 + parseInt(a.value)).toString(),
-            pathA: (335 + parseInt(a.value)).toString(),
-            pathB: (335 + parseInt(a.value)).toString()
+                pathX: a.value.toString(),
+                pathY: (318 + parseInt(a.value)).toString(),
+                pathA: (330 + parseInt(a.value)).toString(),
+                pathB: (350 + parseInt(a.value)).toString()
+            })
         })
-    })
     }
 
     render() {

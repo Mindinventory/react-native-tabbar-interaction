@@ -14,7 +14,7 @@ Read about how we made this on our blog (https://www.mindinventory.com/blog/crea
 
 
 # Installation
-`npm i react-native-tab-bar-interaction`
+`npm i mindinventory/react-native-tab-bar-interaction`
 
 Android: `react-native run-android`
 
