@@ -25,7 +25,7 @@ iPhone: `react-native run-ios`
 
 ```js
 
-import TabBar from "@mindinventory/react-native-tab-bar-interaction";
+import TabBar from "react-native-tab-bar-interaction";
 ...
   render() {
       return (
