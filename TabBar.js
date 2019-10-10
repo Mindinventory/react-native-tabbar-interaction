@@ -186,6 +186,8 @@ const styles = StyleSheet.create({
         marginBottom: '4%',
         left: '4%',
         right: '4%',
+        position: 'absolute',
+        bottom: '1%',
     },
     subContent: {
         flexDirection: 'row',
