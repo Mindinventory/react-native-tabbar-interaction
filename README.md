@@ -25,11 +25,11 @@ iPhone: `react-native run-ios`
 
 ```js
 
-import TabBar from "react-native-tab-bar-interaction";
+import TabBar from "@mindinventory/react-native-tab-bar-interaction";
 ...
   render() {
       return (
-          <TabBar>
+          <TabBar bgNavBar="white" bgNavBarSelector="white" stroke="skyblue>
             <TabBar.Item
                 icon={require('./tab1.png')}
                 selectedIcon={require('./tab1.png')}
@@ -72,7 +72,10 @@ import TabBar from "react-native-tab-bar-interaction";
 | icon | image source | required | the icon when item is not focus |
 | selectedIcon | image source | required | the icon when item is focus |
 | title | string | required | title of item |
-| screenBackgroundColor | string | required | background color of tab |
+| screenBackgroundColor | string | required | background color of screen |
+| bgNavBar | string | option | background color of nav |
+| bgNavBarSelector | string | option | background color of nav selected |
+| stroke | string | option | border color of nav |
 
 ## Dependencies
 
