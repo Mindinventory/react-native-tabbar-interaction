@@ -1,6 +1,7 @@
 import {
     StyleSheet,
     View,
+    KeyboardAvoidingView,
     TouchableHighlight,
     Dimensions,
     Animated,
@@ -94,7 +95,7 @@ export default class TabBar extends Component{
 
                 {children[selectedIndex]}
 
-                <View style={[styles.content]}>
+                <KeyboardAvoidingView enabled={false} behavior='height' style={[styles.content]}>
                     <View style={styles.subContent}>
                         {
                             React.Children.map(children,  (child,i) => {
@@ -140,7 +141,7 @@ export default class TabBar extends Component{
                         />
                     </Svg>
                 </View>
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 
