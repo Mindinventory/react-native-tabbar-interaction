@@ -29,7 +29,7 @@ import TabBar from "@mindinventory/react-native-tab-bar-interaction";
 ...
   render() {
       return (
-          <TabBar bgNavBar="white" bgNavBarSelector="white" stroke="skyblue>
+          <TabBar bgNavBar="white" bgNavBarSelector="white" stroke="skyblue">
             <TabBar.Item
                 icon={require('./tab1.png')}
                 selectedIcon={require('./tab1.png')}
