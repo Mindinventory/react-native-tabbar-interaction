@@ -8,7 +8,6 @@ made with React Native.
 
 # Installation
 
-`npm i mindinventory/react-native-tab-bar-interaction`
 using npm:
 
 ```
