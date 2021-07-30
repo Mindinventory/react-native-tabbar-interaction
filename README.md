@@ -3,11 +3,6 @@
 Beautiful Tabbar Interaction with Sliding Inset FABs,
 made with React Native.
 
-Check it out on Béhance (https://www.behance.net/gallery/68043143/Tab-bar-interaction-with-animated-icons)
-
-Check it out on Dribbble (https://dribbble.com/shots/4844696-Tab-bar-interaction-with-animated-icons)
-
-Read about how we made this on our blog (https://www.mindinventory.com/blog/create-tabbar-plugin-with-react-native/)
 
 ![tabBar](doc/tabBar.gif)
 
