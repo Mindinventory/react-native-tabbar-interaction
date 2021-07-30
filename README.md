@@ -3,7 +3,6 @@
 Beautiful Tabbar Interaction with Sliding Inset FABs,
 made with React Native.
 
-
 ![tabBar](doc/tabBar.gif)
 
 # Installation
@@ -62,39 +61,50 @@ const tabs = [
 ];
 ...
 
-      return (
-          <Tabbar
-        tabs={tabs}
-        tabBarContainerBackground='#fff'
-        tabBarBackground='#6699ff'
-        activeTabBackground='#6699ff'
-        labelStyle={{ color: '#4d4d4d', fontWeight: '600', fontSize: 11 }}
-        onTabChange={() => console.log('Tab changed')}
-      />
-      );
+return (
+  <Tabbar
+    tabs={tabs}
+    tabBarContainerBackground='#fff'
+    tabBarBackground='#6699ff'
+    activeTabBackground='#6699ff'
+    labelStyle={{ color: '#4d4d4d', fontWeight: '600', fontSize: 11 }}
+    onTabChange={() => console.log('Tab changed')}
+  />
+);
 
 ```
 
 ## Component props
 
+### Tabbar
+
 | prop                      | value    | required/optional | description                                 |
-| -----------------------   | ---------| ----------------- | --------------------------------------------|
-| tabs                      | array    | required          | It is user for showing icon and label       |
-| tabBarContainerBackground | string   | required          | Use for change tabBar container color       |
-| tabBarBackground          | string   | required          | Use for change tabBar background color      |
-| activeTabBackground       | string   | required          | Use for change active tab background color  |
-| labelStyle                | style    | required          | Use for apply style on tab label            |
-| onTabChange               | function | required          | Use to perform any action when click on tab |
+| ------------------------- | -------- | ----------------- | -------------------------------------------- |
+| tabs                      | array    | required          | It is user for showing icon and label.       |
+| tabBarContainerBackground | string   | required          | Use for change tabBar container color.       |
+| tabBarBackground          | string   | required          | Use for change tabBar background color.      |
+| activeTabBackground       | string   | required          | Use for change active tab background color.  |
+| labelStyle                | style    | required          | Use for apply style on tab label.            |
+| onTabChange               | function | required          | Use to perform any action when click on tab. |
+
+### tabs
+
+| prop                      | value     | required/optional | description                                 |
+| ------------------------- | --------  | ----------------- | ------------------------------------------- |
+| name                      | string    | required          | use for showing tab label.                  |
+| activeIcon                | component | required          | Use for showing tab active icon/image.      |
+| inactiveIcon              | component | required          | Use for showing tab inactiveIcon icon/image.|
+
 
 ## Dependencies
 
 - `react-native-svg`
 
-# Changelog
+# Version Migration
 
-### Version: 1.0
+### Version: 2.0.1
 
-- Initial Build
+How to migrate version **1.0.0** to **2.0.1** [Click here](VERSION_MIGRATION.md).
 
 # LICENSE!
 
