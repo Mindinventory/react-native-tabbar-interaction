@@ -81,11 +81,17 @@ return (
 | prop                      | value    | required/optional | description                                 |
 | ------------------------- | -------- | ----------------- | -------------------------------------------- |
 | tabs                      | array    | required          | It is user for showing icon and label.       |
-| tabBarContainerBackground | string   | required          | Use for change tabBar container color.       |
+| tabBarContainerBackground | string   | optional          | Use for change tabBar container color.       |
 | tabBarBackground          | string   | required          | Use for change tabBar background color.      |
-| activeTabBackground       | string   | required          | Use for change active tab background color.  |
-| labelStyle                | style    | required          | Use for apply style on tab label.            |
-| onTabChange               | function | required          | Use to perform any action when click on tab. |
+| activeTabBackground       | string   | optional          | Use for change active tab background color.  |
+| labelStyle                | style    | optional          | Use for apply style on tab label.            |
+| onTabChange               | function | optional          | Use to perform any action when click on tab. |
+| containerBottomSpace      | number   | optional          | Use to add space between tabBar container and from bottom of screen. |
+| containerWidth            | number   | optional          | Use for set width of tabBar container        |
+| containerTopRightRadius   | number   | optional          | Use for add top right radius on tabBar container |
+| containerTopLeftRadius    | number   | optional          | Use for add top left radius on tabBar container |
+| containerBottomLeftRadius | number   | optional          | Use for add bottom left radius on tabBar container |
+| containerBottomRightRadius| number   | optional          | Use for add bottom right radius on tabBar container |
 
 ### tabs
 
