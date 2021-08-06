@@ -3,7 +3,8 @@
 Beautiful Tabbar Interaction with Sliding Inset FABs,
 made with React Native.
 
-![tabBar](doc/tabBar.gif)
+<!-- ![tabBar](doc/tabBar.gif) -->
+<img src="https://cdn.dribbble.com/users/1233499/screenshots/4844696/preview.gif" >
 
 # Installation
 
@@ -110,7 +111,7 @@ return (
 
 ### Version: 2.0.1
 
-How to migrate version **1.0.0** to **2.0.1** [Click here](VERSION_MIGRATION.md).
+How to migrate version **1.0.0** to [**2.0.1**](VERSION_MIGRATION.md).
 
 # LICENSE!
 
