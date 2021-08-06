@@ -94,4 +94,3 @@ import TabBar from "@mindinventory/react-native-tab-bar-interaction";
     }
 ```
 
-# [Click here](README.md) to check props for [**2.0.1**](README.md) version.
