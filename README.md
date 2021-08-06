@@ -13,9 +13,9 @@ Check it out on Dribbble (https://dribbble.com/shots/4844696-Tab-bar-interaction
 
 <!-- using npm:
 
-```
-npm install mindinventory/react-native-tab-bar-interaction -->
-```
+<!-- ``` -->
+<!-- npm install mindinventory/react-native-tab-bar-interaction -->
+<!-- ``` -->
 
 using yarn:
 
