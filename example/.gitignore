@@ -28,7 +28,8 @@ build/
 .gradle
 local.properties
 *.iml
-
+yarn.lock
+package-lock.json
 # node.js
 #
 node_modules/
