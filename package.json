@@ -1,8 +1,8 @@
 {
   "name": "@mindinventory/react-native-tab-bar-interaction",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "A tabbar component for React Native",
-  "main": "TabBar.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
