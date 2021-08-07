@@ -1,6 +1,6 @@
 {
   "name": "@mindinventory/react-native-tab-bar-interaction",
-  "version": "2.0.7",
+  "version": "2.0.10",
   "description": "A tabbar component for React Native",
   "main": "index.js",
   "scripts": {
@@ -13,9 +13,7 @@
     "Tabbar",
     "react-native-tabbar"
   ],
-  "_requiredBy": [
-    "/"
-  ],
+  
   "peerDependencies": {
     "react": "16.3.1",
     "react-native": "0.56",
@@ -23,13 +21,12 @@
     "react-native-svg": "^12.1.1"
   },
   "license": "ISC",
-  "files": [
-    "README.md"
-  ],
+  
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Mindinventory/react-native-tab-bar-interaction.git"
   },
+  "private": false,
   "bugs": {
     "url": "https://github.com/Mindinventory/react-native-tab-bar-interaction/issues"
   },

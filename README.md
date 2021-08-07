@@ -32,7 +32,7 @@ yarn add @mindinventory/react-native-tab-bar-interaction
 
 ```js
 
-import TabBar from "@mindinventory/react-native-tab-bar-interaction";
+import Tabbar from "@mindinventory/react-native-tab-bar-interaction";
 ...
 
 const tabs = [
@@ -68,8 +68,8 @@ const tabs = [
 return (
   <Tabbar
     tabs={tabs}
-    tabBarContainerBackground='#fff'
-    tabBarBackground='#6699ff'
+    tabBarContainerBackground='#6699ff'
+    tabBarBackground='#fff'
     activeTabBackground='#6699ff'
     labelStyle={{ color: '#4d4d4d', fontWeight: '600', fontSize: 11 }}
     onTabChange={() => console.log('Tab changed')}

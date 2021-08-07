@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@mindinventory/react-native-tab-bar-interaction": "^2.0.8",
+    
     "@mindinventory/rn-top-navbar": "0.0.3",
     "d3-shape": "^3.0.1",
     "lottie-ios": "3.2.3",
