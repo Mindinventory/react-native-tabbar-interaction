@@ -112,9 +112,9 @@ return (
 
 # Version Migration
 
-### Version: 2.1.3
+### Version: 2.1.4
 
-How to migrate version [**1.0.0** to **2.1.3**](VERSION_MIGRATION.md).
+How to migrate version [**1.0.0** to **2.1.4**](VERSION_MIGRATION.md).
 
 # LICENSE!
 
