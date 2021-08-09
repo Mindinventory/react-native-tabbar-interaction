@@ -1,6 +1,6 @@
 {
   "name": "@mindinventory/react-native-tab-bar-interaction",
-  "version": "2.0.10",
+  "version": "2.1.2",
   "description": "A tabbar component for React Native",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,8 @@
   ],
   
   "peerDependencies": {
-    "react": "^16.3.1",
-    "react-native": "^0.56",
+    "react": "17.0.1",
+    "react-native": "0.64.2",
     "d3-shape": "^3.0.1",
     "react-native-svg": "^12.1.1"
   },
