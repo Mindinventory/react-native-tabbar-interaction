@@ -119,7 +119,6 @@ export default class Tabbar extends React.PureComponent<Props> {
       return (
         <>
           <View
-            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               backgroundColor: tabBarContainerBackground
                 ? tabBarContainerBackground
@@ -131,7 +130,6 @@ export default class Tabbar extends React.PureComponent<Props> {
               borderTopLeftRadius,
               borderBottomLeftRadius,
               borderBottomRightRadius,
-              // height: height + 25
             }}
           >
             <View
@@ -151,7 +149,6 @@ export default class Tabbar extends React.PureComponent<Props> {
               <AnimatedSvg
                 width={CustomWidth * 2}
                 {...{ height }}
-                // eslint-disable-next-line react-native/no-inline-styles
                 style={{
                   transform: [{ translateX }],
                   justifyContent: "center",
@@ -165,21 +162,18 @@ export default class Tabbar extends React.PureComponent<Props> {
               </View>
             </View>
             <SafeAreaView
-              style={[
-                // eslint-disable-next-line react-native/no-inline-styles
-                {
-                  alignSelf: "center",
-                  borderBottomLeftRadius,
-                  borderBottomRightRadius,
-                },
-              ]}
+              style={{
+                alignSelf: "center",
+                borderBottomLeftRadius,
+                borderBottomRightRadius,
+              }}
             />
           </View>
         </>
       );
     } else {
       return (
-        <View style={styles.container2}>
+        <View style={styles.emptyContainer}>
           <Text>Please add tab data</Text>
         </View>
       );
@@ -189,7 +183,7 @@ export default class Tabbar extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get("window").width,
+    width: width,
   },
-  container2: { flex: 1, justifyContent: "center", alignItems: "center" },
+  emptyContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
 });

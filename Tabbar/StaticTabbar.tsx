@@ -109,7 +109,6 @@ export default class StaticTabbar extends React.PureComponent<Props> {
                 </Animated.View>
               </TouchableWithoutFeedback>
               <Animated.View
-                // eslint-disable-next-line react-native/no-inline-styles
                 style={{
                   position: "absolute",
                   top: -8,
