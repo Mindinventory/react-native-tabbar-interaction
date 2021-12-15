@@ -14,8 +14,8 @@
     "react-native-tabbar"
   ],
   "peerDependencies": {
-    "react": "17.0.1",
-    "react-native": "0.64.2"
+    "react": "*",
+    "react-native": "*"
   },
   "license": "ISC",
   "repository": {
