@@ -82,29 +82,28 @@ return (
 
 ### Tabbar
 
-| prop                      | value    | required/optional | description                                 |
-| ------------------------- | -------- | ----------------- | -------------------------------------------- |
-| tabs                      | array    | required          | It is user for showing icon and label.       |
-| tabBarContainerBackground | string   | optional          | Use for change tabBar container color.       |
-| tabBarBackground          | string   | required          | Use for change tabBar background color.      |
-| activeTabBackground       | string   | optional          | Use for change active tab background color.  |
-| labelStyle                | style    | optional          | Use for apply style on tab label.            |
-| onTabChange               | function | optional          | Use to perform any action when click on tab. |
-| containerBottomSpace      | number   | optional          | Use to add space between tabBar container and from bottom of screen. |
-| containerWidth            | number   | optional          | Use for set width of tabBar container        |
-| containerTopRightRadius   | number   | optional          | Use for add top right radius on tabBar container |
-| containerTopLeftRadius    | number   | optional          | Use for add top left radius on tabBar container |
-| containerBottomLeftRadius | number   | optional          | Use for add bottom left radius on tabBar container |
-| containerBottomRightRadius| number   | optional          | Use for add bottom right radius on tabBar container |
+| prop                       | value    | required/optional | description                                                          |
+| -------------------------- | -------- | ----------------- | -------------------------------------------------------------------- |
+| tabs                       | array    | required          | It is user for showing icon and label.                               |
+| tabBarContainerBackground  | string   | optional          | Use for change tabBar container color.                               |
+| tabBarBackground           | string   | required          | Use for change tabBar background color.                              |
+| activeTabBackground        | string   | optional          | Use for change active tab background color.                          |
+| labelStyle                 | style    | optional          | Use for apply style on tab label.                                    |
+| onTabChange                | function | optional          | Use to perform any action when click on tab.                         |
+| containerBottomSpace       | number   | optional          | Use to add space between tabBar container and from bottom of screen. |
+| containerWidth             | number   | optional          | Use for set width of tabBar container                                |
+| containerTopRightRadius    | number   | optional          | Use for add top right radius on tabBar container                     |
+| containerTopLeftRadius     | number   | optional          | Use for add top left radius on tabBar container                      |
+| containerBottomLeftRadius  | number   | optional          | Use for add bottom left radius on tabBar container                   |
+| containerBottomRightRadius | number   | optional          | Use for add bottom right radius on tabBar container                  |
 
 ### tabs
 
-| properties                | value     | required/optional | description                                 |
-| ------------------------- | --------  | ----------------- | ------------------------------------------- |
-| name                      | string    | required          | use for showing tab label.                  |
-| activeIcon                | component | required          | Use for showing tab active icon/image.      |
-| inactiveIcon              | component | required          | Use for showing tab inactiveIcon icon/image.|
-
+| properties   | value     | required/optional | description                                  |
+| ------------ | --------- | ----------------- | -------------------------------------------- |
+| name         | string    | required          | use for showing tab label.                   |
+| activeIcon   | component | required          | Use for showing tab active icon/image.       |
+| inactiveIcon | component | required          | Use for showing tab inactiveIcon icon/image. |
 
 ## Dependencies
 
@@ -112,9 +111,9 @@ return (
 
 # Version Migration
 
-### Version: 2.1.4
+### Version: 2.2.0
 
-How to migrate version [**1.0.0** to **2.1.4**](VERSION_MIGRATION.md).
+How to migrate version [**1.0.0** to **2.2.0**](VERSION_MIGRATION.md).
 
 # LICENSE!
 
