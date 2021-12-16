@@ -10,14 +10,14 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@mindinventory/react-native-tab-bar-interaction": "2.2.0",
+    "@mindinventory/react-native-tab-bar-interaction": "/Users/mind/Documents/ReactNative/npm/react-native-tabbar-interaction/mindinventory-react-native-tab-bar-interaction-2.2.0.tgz",
     "lottie-ios": "3.2.3",
-    "lottie-react-native": "^4.0.3",
+    "lottie-react-native": "4.0.3",
     "react": "17.0.1",
-    "react-native": "1",
-    "react-native-svg": "^12.1.1",
-    "react-native-svg-animations": "^0.2.6",
-    "react-native-vector-icons": "^8.1.0"
+    "react-native": "0.64.2",
+    "react-native-svg": "12.1.1",
+    "react-native-svg-animations": "0.2.6",
+    "react-native-vector-icons": "8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
