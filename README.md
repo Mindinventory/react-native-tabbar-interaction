@@ -22,6 +22,41 @@ using yarn:
 ```
 yarn add @mindinventory/react-native-tab-bar-interaction
 ```
+## Dependencies
+
+- `react-native-svg`
+- `react-native-svg-transformer`
+
+## Configure dependencies in file metro.config.js update this module export.
+
+```
+const { getDefaultConfig } = require("metro-config");
+
+module.exports = (async () => {
+  const {
+    resolver: { sourceExts, assetExts }
+  } = await getDefaultConfig();
+  return {
+    transformer: {
+      babelTransformerPath: require.resolve("react-native-svg-transformer")
+    },
+    resolver: {
+      assetExts: assetExts.filter(ext => ext !== "svg"),
+      sourceExts: [...sourceExts, "svg"]
+    }
+  };
+})();
+
+```
+## create one declarations.d.ts in your root directory.
+```
+declare module "*.svg" {
+  import React from 'react';
+  import { SvgProps } from "react-native-svg";
+  const content: React.FC<SvgProps>;
+  export default content;
+}
+```
 
 ### Supported platform
 
@@ -105,9 +140,6 @@ return (
 | activeIcon   | component | required          | Use for showing tab active icon/image.       |
 | inactiveIcon | component | required          | Use for showing tab inactiveIcon icon/image. |
 
-## Dependencies
-
-- `react-native-svg`
 
 # Version Migration
 
