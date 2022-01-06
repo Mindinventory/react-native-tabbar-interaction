@@ -14,7 +14,7 @@ Check it out on Dribbble (https://dribbble.com/shots/4844696-Tab-bar-interaction
 using npm:
 
 ```
-npm install mindinventory/react-native-tab-bar-interaction
+npm install @mindinventory/react-native-tab-bar-interaction
 ```
 
 using yarn:
@@ -111,9 +111,9 @@ return (
 
 # Version Migration
 
-### Version: 2.2.0
+### Version: 2.2.1
 
-How to migrate version [**1.0.0** to **2.2.0**](VERSION_MIGRATION.md).
+How to migrate version [**1.0.0** to **2.2.1**](VERSION_MIGRATION.md).
 
 # LICENSE!
 

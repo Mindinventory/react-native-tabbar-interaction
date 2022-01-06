@@ -6,6 +6,7 @@ import {
   View,
   Animated,
   Text,
+  TextStyle,
 } from "react-native";
 import * as shape from "d3-shape";
 import Svg, { Path } from "react-native-svg";
@@ -60,14 +61,17 @@ export interface TabsType {
 
 interface Props {
   tabs: Array<TabsType>;
-  containerTopRightRadius: number;
+  containerTopRightRadius?: number;
   tabBarBackground: string;
   tabBarContainerBackground: string;
-  containerBottomSpace: number;
-  containerWidth: number;
-  containerTopLeftRadius: number;
-  containerBottomLeftRadius: number;
-  containerBottomRightRadius: number;
+  containerBottomSpace?: number;
+  containerWidth?: number;
+  containerTopLeftRadius?: number;
+  containerBottomLeftRadius?: number;
+  containerBottomRightRadius?: number;
+  activeTabBackground?: string;
+  labelStyle?: TextStyle;
+  onTabChange?: (tab: TabsType) => void;
 }
 
 export default class Tabbar extends React.PureComponent<Props> {
