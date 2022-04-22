@@ -131,6 +131,8 @@ return (
 | containerTopLeftRadius     | number   | optional          | Use for add top left radius on tabBar container                      |
 | containerBottomLeftRadius  | number   | optional          | Use for add bottom left radius on tabBar container                   |
 | containerBottomRightRadius | number   | optional          | Use for add bottom right radius on tabBar container                  |
+| defaultActiveTabIndex      | number   | optional          | Use to set default active tab                                        |
+| transitionSpeed            | number   | optional          | Use to set transition speed                                          |
 
 ### tabs
 
@@ -143,9 +145,9 @@ return (
 
 # Version Migration
 
-### Version: 2.2.1
+### Version: 2.2.2
 
-How to migrate version [**1.0.0** to **2.2.1**](VERSION_MIGRATION.md).
+How to migrate version [**1.0.0** to **2.2.2**](VERSION_MIGRATION.md).
 
 # LICENSE!
 

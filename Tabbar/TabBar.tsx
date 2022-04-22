@@ -49,7 +49,7 @@ const getPath = (tabWidth: number, width: number) => {
     { x: 0, y: height },
     { x: 0, y: 0 },
   ]);
-
+ 
   return ` ${tab} `;
 };
 
@@ -72,6 +72,8 @@ interface Props {
   activeTabBackground?: string;
   labelStyle?: TextStyle;
   onTabChange?: (tab: TabsType) => void;
+  defaultActiveTabIndex?: number;
+  transitionSpeed?: number;
 }
 
 export default class Tabbar extends React.PureComponent<Props> {

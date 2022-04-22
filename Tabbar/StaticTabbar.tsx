@@ -21,21 +21,39 @@ interface Props {
   activeTabBackground?: string;
   Hvalue?: number;
   containerWidth?: number;
+  defaultActiveTabIndex?: number;
+  transitionSpeed?: number;
 }
 
 export default class StaticTabbar extends React.PureComponent<Props> {
   values: Array<Animated.AnimatedValue>;
+  transitionDuration = this.props.transitionSpeed
+    ? this.props.transitionSpeed
+    : null;
+  activeTabIndex = this.props.defaultActiveTabIndex
+    ? (this.props.defaultActiveTabIndex > this.props.tabs.length
+      ? 0
+      : this.props.defaultActiveTabIndex)
+    : 0;
   constructor(props: Props) {
     super(props);
     const { tabs } = this.props;
+    const { activeTabIndex } = this;
+
     this.values = tabs?.map(
-      (tab, index) => new Animated.Value(index === 0 ? 1 : 0)
+      (tab, index) => new Animated.Value(index === activeTabIndex ? 1 : 0)
     );
   }
 
-  onPress = (index: number) => {
+  componentDidMount() {
+    const { activeTabIndex } = this;
+    this.onPress(activeTabIndex, true);
+  }
+
+  onPress = (index: number, noAnimation: boolean = false) => {
     if (prevIndex !== index) {
       const { value, tabs, containerWidth } = this.props;
+      const { transitionDuration } = this;
       let customWidth = containerWidth ? containerWidth : width;
       const tabWidth = customWidth / tabs.length;
       Animated.sequence([
@@ -44,14 +62,15 @@ export default class StaticTabbar extends React.PureComponent<Props> {
             (v: Animated.AnimatedValue | Animated.AnimatedValueXY) =>
               Animated.timing(v, {
                 toValue: 0,
-                duration: 50,
                 useNativeDriver: true,
+                duration: noAnimation ? 0 : 50,
               })
           )
         ),
         Animated.timing(value, {
           toValue: tabWidth * index,
           useNativeDriver: true,
+          duration: noAnimation ? 0 : transitionDuration,
         }),
         Animated.timing(this.values[index], {
           toValue: 1,
