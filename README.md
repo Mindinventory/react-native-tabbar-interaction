@@ -147,7 +147,7 @@ return (
 
 ### Version: 2.2.2
 
-How to migrate version [**1.0.0** to **2.2.2**](VERSION_MIGRATION.md).
+How to migrate version [**1.0.0** to **2.1.2+**](VERSION_MIGRATION.md).
 
 # LICENSE!
 
