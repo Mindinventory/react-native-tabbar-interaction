@@ -31,18 +31,23 @@ export default class StaticTabbar extends React.PureComponent<Props> {
     ? this.props.transitionSpeed
     : null;
   activeTabIndex = this.props.defaultActiveTabIndex
-    ? (this.props.defaultActiveTabIndex > this.props.tabs.length
+    ? this.props.defaultActiveTabIndex > this.props.tabs.length
       ? 0
-      : this.props.defaultActiveTabIndex)
+      : this.props.defaultActiveTabIndex
     : 0;
   constructor(props: Props) {
     super(props);
     const { tabs } = this.props;
     const { activeTabIndex } = this;
-
+    this.tabRef = React.createRef();
+    this.setActiveIndex = this.setActiveIndex.bind(this);
     this.values = tabs?.map(
       (tab, index) => new Animated.Value(index === activeTabIndex ? 1 : 0)
     );
+  }
+
+  setActiveIndex(index: number) {
+    this.activeTabIndex = index;
   }
 
   componentDidMount() {
@@ -117,6 +122,7 @@ export default class StaticTabbar extends React.PureComponent<Props> {
           return (
             <React.Fragment {...{ key }}>
               <TouchableWithoutFeedback
+                ref={this.tabRef}
                 onPress={() => {
                   onPress(key);
                   onTabChange && onTabChange(tab);

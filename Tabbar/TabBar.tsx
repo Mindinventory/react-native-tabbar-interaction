@@ -49,7 +49,7 @@ const getPath = (tabWidth: number, width: number) => {
     { x: 0, y: height },
     { x: 0, y: 0 },
   ]);
- 
+
   return ` ${tab} `;
 };
 
@@ -74,9 +74,10 @@ interface Props {
   onTabChange?: (tab: TabsType) => void;
   defaultActiveTabIndex?: number;
   transitionSpeed?: number;
+  innerRef: any;
 }
 
-export default class Tabbar extends React.PureComponent<Props> {
+class Tabbar extends React.PureComponent<Props> {
   value = new Animated.Value(0);
 
   render() {
@@ -90,6 +91,7 @@ export default class Tabbar extends React.PureComponent<Props> {
       containerTopLeftRadius,
       containerBottomLeftRadius,
       containerBottomRightRadius,
+      innerRef,
     } = this.props;
     let CustomWidth = containerWidth ? containerWidth : width;
     const { value } = this;
@@ -186,6 +188,10 @@ export default class Tabbar extends React.PureComponent<Props> {
     }
   }
 }
+
+export default const TabBar = React.forwardRef((props, ref) => 
+  <Tabbar innerRef={ref} {...props} />
+);
 
 const styles = StyleSheet.create({
   container: {
