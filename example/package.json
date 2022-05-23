@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@mindinventory/react-native-tab-bar-interaction": "2.2.0",
     "lottie-ios": "3.2.3",
     "lottie-react-native": "4.0.3",
     "react": "17.0.1",

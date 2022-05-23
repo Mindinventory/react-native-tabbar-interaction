@@ -13,18 +13,12 @@ import Svg, { Path } from "react-native-svg";
 import StaticTabbar from "./StaticTabbar";
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
+// let width = 390;
 let { width } = Dimensions.get("window");
-
 const height = 65;
 
-const getPath = (tabWidth: number, width: number) => {
-  const left = shape
-    .line<string>()
-    .x((d) => d.x)
-    .y((d) => d.y)([
-    { x: 0, y: 0 },
-    { x: width + tabWidth / 2, y: 0 },
-  ]);
+const getPath = (tabWidth: number, width: number, totalTab: number) => {
+
   const tab = shape
     .line<string>()
     .x((d) => d.x)
@@ -38,16 +32,6 @@ const getPath = (tabWidth: number, width: number) => {
     { x: width + tabWidth / 2 + 50 - 10, y: -6 },
     { x: width + tabWidth / 2 + 65 - -35, y: 0 },
     { x: width + tabWidth / 2 + 100, y: 0 },
-  ]);
-  const right = shape
-    .line<string>()
-    .x((d) => d.x)
-    .y((d) => d.y)([
-    { x: width, y: 0 },
-    { x: width * 2, y: 0 },
-    { x: width * 2, y: height },
-    { x: 0, y: height },
-    { x: 0, y: 0 },
   ]);
  
   return ` ${tab} `;
@@ -106,7 +90,7 @@ export default class Tabbar extends React.PureComponent<Props> {
         : console.error("please add tab data");
     let d;
     if (typeof tabWidth == "number") {
-      d = getPath(tabWidth, CustomWidth);
+      d = getPath(tabWidth, CustomWidth, tabs.length);
     }
 
     let borderTopRightRadius = containerTopRightRadius
