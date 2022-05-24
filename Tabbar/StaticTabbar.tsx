@@ -12,7 +12,7 @@ import {
 
 import {TabsType} from './TabBar';
 let {width} = Dimensions.get('window');
-var prevIndex = 0;
+var prevIndex = -1;
 
 interface Props {
   value?: Animated.AnimatedValue;

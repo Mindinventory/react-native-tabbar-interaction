@@ -76,7 +76,7 @@ const App = () => {
   const [bgColor, setBgColor] = useState('#FFC0C7')
 
   useEffect(() => {
-    I18nManager.forceRTL(false)
+    I18nManager.forceRTL(true)
   }, [])
 
   const onTabChange = (item) => {
@@ -119,7 +119,7 @@ const App = () => {
         tabBarBackground={bgColor}        
         labelStyle={{ color: '#4d4d4d', fontWeight: '600', fontSize: 11 }}
         onTabChange={(item) => onTabChange(item)}
-        defaultActiveTabIndex={1}
+        defaultActiveTabIndex={0}
         transitionSpeed={100}
       />
     </View>
