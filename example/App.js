@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { I18nManager, StyleSheet, Text, View } from 'react-native'
 import Tabbar from "@mindinventory/react-native-tab-bar-interaction";
 import LottieView from 'lottie-react-native';
 
@@ -75,6 +75,10 @@ const App = () => {
   const [tabs, setTabs] = useState(tabData)
   const [bgColor, setBgColor] = useState('#FFC0C7')
 
+  useEffect(() => {
+    I18nManager.forceRTL(true)
+  }, [])
+
   const onTabChange = (item) => {
     let tempTabs =[...tabs]
     setTimeout(() => {                  
@@ -115,7 +119,7 @@ const App = () => {
         tabBarBackground={bgColor}        
         labelStyle={{ color: '#4d4d4d', fontWeight: '600', fontSize: 11 }}
         onTabChange={(item) => onTabChange(item)}
-        defaultActiveTabIndex={2}
+        defaultActiveTabIndex={0}
         transitionSpeed={100}
       />
     </View>
