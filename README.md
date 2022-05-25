@@ -1,7 +1,7 @@
 # React Native Tabbar Interaction  [![](https://img.shields.io/npm/v/@mindinventory/react-native-tab-bar-interaction.svg)](https://www.npmjs.com/package/@mindinventory/react-native-tab-bar-interaction)
 
 Beautiful Tabbar Interaction with Sliding Inset FABs,
-made with React Native.
+made for React Native with RTL support.
 
 Check it out on Béhance (https://www.behance.net/gallery/68043143/Tab-bar-interaction-with-animated-icons)
 
