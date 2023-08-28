@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { I18nManager, StyleSheet, Text, View } from 'react-native'
 import Tabbar from "@mindinventory/react-native-tab-bar-interaction";
 import LottieView from 'lottie-react-native';
 
@@ -47,39 +47,27 @@ const tabData = [
   {
     name: 'Home',
     activeIcon: activeHome(true),
-    inactiveIcon: (<View style={{ width: 40, height: 40 }}>
-      <LottieView source={require(`./assets/bar.json`)} autoPlay={false} loop={false} />
-    </View>)
-
+    inactiveIcon: activeHome(false)
   },
   {
     name: 'Cart',
-    activeIcon: null,
-    inactiveIcon: (<View style={{ width: 40, height: 40 }}>
-      <LottieView source={require(`./assets/cart.json`)} autoPlay={false} loop={false} />
-    </View>)
+    activeIcon: activeList(true),
+    inactiveIcon: activeList(false)
   },
   {
     name: 'Search',
-    activeIcon: null,
-    inactiveIcon: (<View style={{ width: 40, height: 40 }}>
-      <LottieView source={require(`./assets/search.json`)} autoPlay={false} loop={false} />
-    </View>)
+    activeIcon: activeCamera(true),
+    inactiveIcon: activeCamera(false)
   },
-
   {
     name: 'Profile',
-    activeIcon: null,
-    inactiveIcon: (<View style={{ width: 40, height: 40 }}>
-      <LottieView source={require(`./assets/user.json`)} autoPlay={false} loop={false} />
-    </View>)
+    activeIcon: activeUser(true),
+    inactiveIcon: activeUser(false)
   },
   {
     name: 'Setting',
-    activeIcon: null,
-    inactiveIcon: (<View style={{ width: 40, height: 40 }}>
-      <LottieView source={require(`./assets/setting.json`)} autoPlay={false} loop={false} />
-    </View>)
+    activeIcon: activeNotification(true),
+    inactiveIcon: activeNotification(false)
   },
 ]
 
@@ -87,9 +75,12 @@ const App = () => {
   const [tabs, setTabs] = useState(tabData)
   const [bgColor, setBgColor] = useState('#FFC0C7')
 
+  useEffect(() => {
+    I18nManager.forceRTL(true)
+  }, [])
+
   const onTabChange = (item) => {
     let tempTabs =[...tabs]
- 
     setTimeout(() => {                  
       tempTabs.map((val) => {
         if (item.name === 'Home' && val.name === 'Home') {
@@ -128,6 +119,8 @@ const App = () => {
         tabBarBackground={bgColor}        
         labelStyle={{ color: '#4d4d4d', fontWeight: '600', fontSize: 11 }}
         onTabChange={(item) => onTabChange(item)}
+        defaultActiveTabIndex={0}
+        transitionSpeed={100}
       />
     </View>
   )

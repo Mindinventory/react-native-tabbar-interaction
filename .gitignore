@@ -28,7 +28,8 @@ build/
 .gradle
 local.properties
 *.iml
-
+yarn.lock
+package-lock.json
 # node.js
 #
 node_modules/
@@ -37,7 +38,7 @@ yarn-error.log
 
 # BUCK
 buck-out/
-\.buckd/
+
 *.keystore
 !debug.keystore
 
@@ -57,3 +58,4 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+/ios/Podfile.lock
