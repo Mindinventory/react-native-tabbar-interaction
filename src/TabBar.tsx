@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Animated,
   Dimensions,
@@ -7,10 +7,32 @@ import {
   Text,
   View,
 } from 'react-native';
+import * as shape from 'd3-shape';
+import Svg, { Path } from 'react-native-svg';
 import { StaticTabbar } from './StaticTabbar';
 
 let { width } = Dimensions.get('window');
 const height = 65;
+
+const AnimatedSvg = Animated.createAnimatedComponent(Svg);
+const getPath = (tabWidth: number, width: number, _totalTab: number) => {
+  const tab = shape
+    .line<string>()
+    .x((d) => d.x)
+    .y((d) => d.y)
+    .curve(shape.curveBasis)([
+    { x: width + tabWidth / 2 - 100, y: 0 },
+    { x: width + tabWidth / 2 - 65 + -35, y: 0 },
+    { x: width + tabWidth / 2 - 50 + 10, y: -6 },
+    { x: width + tabWidth / 2 - 50 + 15, y: height - 14 },
+    { x: width + tabWidth / 2 + 50 - 15, y: height - 14 },
+    { x: width + tabWidth / 2 + 50 - 10, y: -6 },
+    { x: width + tabWidth / 2 + 65 - -35, y: 0 },
+    { x: width + tabWidth / 2 + 100, y: 0 },
+  ]);
+
+  return ` ${tab} `;
+};
 
 export interface TabsType {
   name: string;
@@ -20,7 +42,7 @@ export interface TabsType {
 export interface TabBarProps<T> {
   tabs: Array<T>;
   // containerTopRightRadius?: number;
-  // tabBarBackground: string;
+  tabBarBackground: string;
   // tabBarContainerBackground: string;
   // containerBottomSpace?: number;
   containerWidth?: number;
@@ -40,10 +62,25 @@ export const TabBar = <T,>({
   // defaultActiveTabIndex,
   // onTabChange,
   containerWidth,
+  tabBarBackground,
   ...props
 }: TabBarProps<T>) => {
+  let tabBarBackgroundColor = tabBarBackground
+    ? tabBarBackground
+    : 'transparent';
   let CustomWidth = containerWidth ? containerWidth : width;
-  const value = new Animated.Value(0);
+  const value = useMemo(() => {
+    return new Animated.Value(0);
+  }, []);
+  const tabWidth: number = tabs.length > 0 ? CustomWidth / tabs.length : 100;
+  const d = getPath(tabWidth, CustomWidth, tabs.length);
+  const translateX = useMemo(() => {
+    return value.interpolate({
+      inputRange: [0, CustomWidth],
+      outputRange: [-CustomWidth, 0],
+    });
+  }, [CustomWidth, value]);
+
   return (
     <>
       {tabs.length > 0 ? (
@@ -64,17 +101,17 @@ export const TabBar = <T,>({
                 alignSelf: 'center',
               }}
             >
-              {/* <AnimatedSvg
+              <AnimatedSvg
                 width={CustomWidth * 2}
                 {...{ height }}
                 style={{
                   transform: [{ translateX }],
-                  justifyContent: "center",
-                  alignItems: "center",
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
               >
                 <Path fill={tabBarBackgroundColor} {...{ d }} />
-              </AnimatedSvg> */}
+              </AnimatedSvg>
               <View style={StyleSheet.absoluteFill}>
                 <StaticTabbar {...props} {...{ tabs, value }} />
                 {/* <Text>My Tab</Text> */}

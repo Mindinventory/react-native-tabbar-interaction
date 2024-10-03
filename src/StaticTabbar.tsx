@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import {
   Animated,
   Dimensions,
@@ -13,7 +13,7 @@ import {
 let { width } = Dimensions.get('window');
 
 export interface StaticTabbarProps<T> {
-  value?: Animated.AnimatedValue;
+  value: Animated.AnimatedValue;
   tabs: Array<T>;
   onTabChange?: (tab: T) => void;
   labelStyle?: TextStyle;
@@ -23,6 +23,7 @@ export interface StaticTabbarProps<T> {
   defaultActiveTabIndex?: number;
   transitionSpeed?: number;
 }
+let prevIndex = -1;
 
 export const StaticTabbar = <T,>({
   defaultActiveTabIndex,
@@ -30,16 +31,31 @@ export const StaticTabbar = <T,>({
   containerWidth,
   value,
   onTabChange,
+  transitionSpeed = 100,
 }: StaticTabbarProps<T>) => {
-  let customWidth = containerWidth ? containerWidth : width;
-  let values: Array<Animated.AnimatedValue> = tabs?.map(
-    (tab, index) => new Animated.Value(index === activeTabIndex ? 1 : 0)
-  );
-  let activeTabIndex = defaultActiveTabIndex
-    ? defaultActiveTabIndex > tabs.length
-      ? 0
-      : defaultActiveTabIndex
-    : 0;
+  let customWidth = useMemo(() => {
+    return containerWidth ? containerWidth : width;
+  }, [containerWidth]);
+  let transitionDuration = useMemo(() => {
+    return transitionSpeed ? transitionSpeed : 100;
+  }, [transitionSpeed]);
+  const tabWidth = useMemo(() => {
+    return customWidth / tabs.length;
+  }, [customWidth, tabs.length]);
+  let activeTabIndex = useMemo(() => {
+    return defaultActiveTabIndex
+      ? defaultActiveTabIndex > tabs.length
+        ? 0
+        : defaultActiveTabIndex
+      : 0;
+  }, [defaultActiveTabIndex, tabs.length]);
+
+  const values: Array<Animated.AnimatedValue> =
+    useMemo((): Array<Animated.AnimatedValue> => {
+      return tabs.map(
+        (_tab, index) => new Animated.Value(index === activeTabIndex ? 1 : 0)
+      );
+    }, [tabs, activeTabIndex]);
 
   const range = (start: number, end: number) => {
     var len = end - start;
@@ -48,10 +64,48 @@ export const StaticTabbar = <T,>({
     return a;
   };
 
+  const onPress = useCallback(
+    (index: number, noAnimation: boolean = false) => {
+      if (prevIndex !== index) {
+        let rangeNumber = range(0, tabs.length).reverse();
+
+        Animated.sequence([
+          Animated.parallel(
+            values.map((v: Animated.AnimatedValue | Animated.AnimatedValueXY) =>
+              Animated.timing(v, {
+                toValue: 0,
+                useNativeDriver: true,
+                duration: noAnimation ? 0 : 50,
+              })
+            )
+          ),
+          Animated.timing(value, {
+            toValue: I18nManager.isRTL
+              ? customWidth + tabWidth * rangeNumber[index]
+              : tabWidth * index,
+            useNativeDriver: true,
+            duration: noAnimation ? 0 : transitionDuration,
+          }),
+          Animated.timing(values[index]!, {
+            toValue: 1,
+            useNativeDriver: true,
+            duration: 750,
+          }),
+        ]).start();
+        prevIndex = index;
+      }
+    },
+    [customWidth, tabWidth, tabs.length, transitionDuration, value, values]
+  );
+
+  // useEffect(() => {
+  //   onPress(activeTabIndex, true);
+  // }, [activeTabIndex, onPress]);
+
   return (
     <View style={styles.container}>
       {tabs.map((tab, key) => {
-        const tabWidth = customWidth / tabs.length;
+        // const tabWidth = customWidth / tabs.length;
         let rangeNumber = range(0, tabs.length).reverse();
         const cursor = I18nManager.isRTL
           ? customWidth + tabWidth * rangeNumber[key]
@@ -63,20 +117,23 @@ export const StaticTabbar = <T,>({
           extrapolate: 'clamp',
         });
 
-        const opacity1 = values[key].interpolate({
+        const opacity1 = values[key]!.interpolate({
           inputRange: [0, 1],
           outputRange: [0, 1],
           extrapolate: 'clamp',
         });
+
         return (
           <React.Fragment {...{ key }}>
             <TouchableWithoutFeedback
               onPress={() => {
-                // onPress(key);
+                onPress(key);
                 onTabChange && onTabChange(tab);
               }}
             >
-              <Animated.View style={[styles.tab, { zIndex: 100 }]}>
+              <Animated.View
+                style={[styles.tab, { opacity: opacity, zIndex: 100 }]}
+              >
                 <Text style={styles.labelStyle}>{tab.name}A </Text>
               </Animated.View>
             </TouchableWithoutFeedback>
@@ -93,8 +150,9 @@ export const StaticTabbar = <T,>({
                 zIndex: 50,
               }}
             >
-              {/* <View style={newActiveIcon}>{tab.activeIcon}</View> */}
-              <Text style={styles.labelStyle}>{tab.name}B </Text>
+              <View style={styles.activeIcon}>
+                <Text style={styles.labelStyle}>{tab.name}B </Text>
+              </View>
             </Animated.View>
           </React.Fragment>
         );
@@ -120,6 +178,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
   labelStyle: {
     fontSize: 11,
