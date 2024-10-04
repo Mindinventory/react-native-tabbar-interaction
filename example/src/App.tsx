@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, SafeAreaView } from 'react-native';
 import { multiply, TabBar } from 'react-native-bottom-tab-bar';
 
 let { width } = Dimensions.get('window');
@@ -64,7 +64,7 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View
         style={{
           backgroundColor: bgColor,
@@ -84,7 +84,7 @@ export default function App() {
         defaultActiveTabIndex={0}
         // transitionSpeed={100}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
