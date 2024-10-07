@@ -15,7 +15,6 @@ export type TabItemsProps = {
   index: number;
   activeIndex: number;
   onTabPress: () => void;
-  tabBarBackground: string;
   containerWidth: number;
   curvedPaths: any;
 };
@@ -30,7 +29,7 @@ export const TabItem = (props: TabItemsProps) => {
   const labelPosition = getPathXCenterByIndex(curvedPaths, index);
 
   const tabStyle = useAnimatedStyle(() => {
-    const translateY = animatedActiveIndex.value - 1 === index ? -35 : 20;
+    const translateY = animatedActiveIndex.value - 1 === index ? 20 : 20;
     const iconPositionX = iconPosition - index * ICON_SIZE;
     return {
       width: ICON_SIZE,
@@ -42,7 +41,7 @@ export const TabItem = (props: TabItemsProps) => {
     };
   });
   const labelContainerStyle = useAnimatedStyle(() => {
-    const translateY = animatedActiveIndex.value - 1 === index ? 36 : 100;
+    const translateY = animatedActiveIndex.value === index ? 36 : 100;
     return {
       transform: [
         { translateY: withTiming(translateY) },

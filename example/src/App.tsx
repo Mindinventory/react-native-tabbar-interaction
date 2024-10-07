@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { StyleSheet, View, Text, Dimensions, SafeAreaView } from 'react-native';
-import { multiply, TabBar } from 'react-native-bottom-tab-bar';
+import { TabBar } from 'react-native-bottom-tab-bar';
 
 let { width } = Dimensions.get('window');
 interface TabDataType {
@@ -64,7 +64,7 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View
         style={{
           backgroundColor: bgColor,
@@ -79,18 +79,19 @@ export default function App() {
         tabs={tabs as Array<TabDataType>}
         onTabChange={onTabChange}
         // defaultActiveTabIndex={1}
-        containerWidth={width - 20}
-        tabBarBackground={bgColor}
+        containerWidth={width}
+        tabBarBackground={'#fff'}
         defaultActiveTabIndex={0}
         // transitionSpeed={100}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // backgroundColor: '#ccc',
     // alignItems: 'center',
     // justifyContent: 'center',
   },

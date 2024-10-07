@@ -33,7 +33,7 @@ export interface TabBarProps<T> {
   // containerBottomRightRadius?: number;
   activeTabBackground?: string;
   // labelStyle?: TextStyle;
-  onTabChange?: (tab: T) => void;
+  onTabChange?: (tab: T | undefined) => void;
   defaultActiveTabIndex?: number;
   // transitionSpeed?: number;
 }
@@ -85,7 +85,7 @@ export const TabBar = <T,>(props: TabBarProps<T>) => {
     tabs,
     // activeTabBackground,
     // defaultActiveTabIndex,
-    // onTabChange,
+    onTabChange,
     containerWidth,
     tabBarBackground,
   } = props;
@@ -130,15 +130,17 @@ export const TabBar = <T,>(props: TabBarProps<T>) => {
   };
 
   return (
-    <View
-      style={[styles.tabBarContainer, { backgroundColor: tabBarBackground }]}
-    >
+    <View style={[styles.tabBarContainer]}>
       <Svg
         width={containerWidth}
         height={TAB_BAR_HEIGHT}
         style={styles.shadowMd}
       >
-        <AnimatedPath fill={'white'} animatedProps={animatedProps} />
+        {/* transparent */}
+        <AnimatedPath
+          fill={tabBarBackground ? tabBarBackground : '#fff'}
+          animatedProps={animatedProps}
+        />
       </Svg>
       <AnimatedCircle circleX={circleXCoordinate} />
       <View
@@ -157,8 +159,12 @@ export const TabBar = <T,>(props: TabBarProps<T>) => {
               icon={'test'}
               activeIndex={1}
               index={index}
-              onTabPress={() => handleTabPress(index + 1)}
-              tabBarBackground={'red'}
+              onTabPress={() => {
+                handleTabPress(index + 1);
+                if (val !== undefined) {
+                  onTabChange(val);
+                }
+              }}
               containerWidth={containerWidth}
               curvedPaths={curvedPaths}
             />
@@ -171,7 +177,7 @@ export const TabBar = <T,>(props: TabBarProps<T>) => {
 
 const styles = StyleSheet.create({
   tabBarContainer: {
-    // position: 'absolute',
+    position: 'absolute',
     bottom: 0,
     zIndex: 2,
     marginHorizontal: 'auto',
