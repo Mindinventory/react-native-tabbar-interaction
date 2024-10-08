@@ -25,28 +25,22 @@ export interface TabsType {
   name: string;
   activeIcon: JSX.Element;
   inactiveIcon: JSX.Element;
-  activeTintColor?: string;
-  inactiveTintColor?: string;
 }
 
 export interface TabBarProps {
   tabs: Array<TabsType>;
-  // containerTopRightRadius?: number;
-  tabBarBackground: string;
-  // tabBarContainerBackground: string;
-  // containerBottomSpace?: number;
+  circleFillColor?: string;
+  tabBarContainerBackground?: string;
   containerWidth: number;
   // containerTopLeftRadius?: number;
   // containerBottomLeftRadius?: number;
   // containerBottomRightRadius?: number;
   activeTabBackground?: string;
-  // labelStyle?: TextStyle;
   onTabChange: (tab: TabsType, index: number) => void;
   defaultActiveTabIndex?: number;
-  // transitionSpeed?: number;
 }
+const FIX_WIDTH = 380;
 
-const SCALE = 1;
 const TAB_BAR_HEIGHT = 64;
 
 const generateTabShapePath: GenerateSvgPath = (
@@ -57,7 +51,9 @@ const generateTabShapePath: GenerateSvgPath = (
 ) => {
   const adjustedWidth = tabContainerWidth / numOfTabs;
   const tabX = adjustedWidth * position;
-
+  const scaleGen = (tabContainerWidth / FIX_WIDTH) * 1;
+  // console.log('TEST: ', TEST.toFixed(2));
+  const SCALE = Number(scaleGen.toFixed(2));
   const lineGenerator = line().curve(curveBasis);
   const tab = lineGenerator([
     [tabX - 100 * SCALE, 0],
@@ -91,11 +87,10 @@ export const getPathXCenterByIndex = (tabPaths: any[], index: number) => {
 export const TabBar = (props: TabBarProps) => {
   const {
     tabs,
-    // activeTabBackground,
-    // defaultActiveTabIndex,
     onTabChange,
     containerWidth,
-    tabBarBackground,
+    tabBarContainerBackground,
+    circleFillColor,
   } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -165,11 +160,14 @@ export const TabBar = (props: TabBarProps) => {
       >
         {/* transparent */}
         <AnimatedPath
-          fill={tabBarBackground ? tabBarBackground : '#fff'}
+          fill={tabBarContainerBackground ? tabBarContainerBackground : '#fff'}
           animatedProps={animatedProps}
         />
       </Svg>
-      <AnimatedCircle circleX={circleXCoordinate} />
+      <AnimatedCircle
+        circleX={circleXCoordinate}
+        circleFillColor={circleFillColor}
+      />
       <View
         style={[
           styles.tabItemsContainer,
@@ -210,6 +208,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 2,
     marginHorizontal: 'auto',
+    alignSelf: 'center',
   },
   tabItemsContainer: {
     position: 'absolute',

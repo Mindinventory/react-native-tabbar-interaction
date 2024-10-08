@@ -3,17 +3,23 @@ import { StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 type CircleProps = {
   circleX: Animated.SharedValue<number>;
+  circleFillColor?: string;
 };
-const circleContainerSize = 60;
+const circleContainerSize = 56;
 
-const AnimatedCircle: FC<CircleProps> = ({ circleX }) => {
+const AnimatedCircle: FC<CircleProps> = ({ circleX, circleFillColor }) => {
   const circleContainerStyle = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: circleX.value - circleContainerSize / 2 }],
     };
   }, []);
 
-  return <Animated.View style={[circleContainerStyle, styles.container]} />;
+  const circleBg = {
+    backgroundColor: circleFillColor ? circleFillColor : '#fff',
+  };
+  return (
+    <Animated.View style={[circleContainerStyle, styles.container, circleBg]} />
+  );
 };
 
 export default AnimatedCircle;
@@ -25,9 +31,18 @@ const styles = StyleSheet.create({
     width: circleContainerSize,
     borderRadius: circleContainerSize,
     height: circleContainerSize,
-    backgroundColor: '#FFF',
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 'auto',
+    //
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
 });

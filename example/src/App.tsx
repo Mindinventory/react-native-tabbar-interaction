@@ -4,6 +4,7 @@ import { TabBar, type TabsType } from 'react-native-bottom-tab-bar';
 import LottieView from 'lottie-react-native';
 
 const { width: screenWidth } = Dimensions.get('window');
+
 const lottieIconStyle = {
   width: 30,
   height: 30,
@@ -74,7 +75,10 @@ const activeUser = (isPlay: boolean) => {
   );
 };
 
-const tabData: Array<TabsType> = [
+interface TabsDataType extends TabsType {
+  activeTintColor: string;
+}
+const tabData: Array<TabsDataType> = [
   {
     name: 'Home',
     activeTintColor: '#FFC0C7',
@@ -93,12 +97,12 @@ const tabData: Array<TabsType> = [
     activeIcon: activeSearch(true),
     inactiveIcon: activeSearch(false),
   },
-  {
-    name: 'Profile',
-    activeTintColor: '#ff6666',
-    activeIcon: activeUser(true),
-    inactiveIcon: activeUser(false),
-  },
+  // {
+  //   name: 'Profile',
+  //   activeTintColor: '#ff6666',
+  //   activeIcon: activeUser(true),
+  //   inactiveIcon: activeUser(false),
+  // },
   // {
   //   name: 'Setting',
   //   activeTintColor: '#66ff99',
@@ -125,7 +129,7 @@ export default function App() {
         ref={flatListRef}
         data={tabs}
         keyExtractor={(item) => item.name}
-        renderItem={({ item }: { item: TabsType }) => {
+        renderItem={({ item }: { item: TabsDataType }) => {
           return (
             <View
               style={[
@@ -149,10 +153,11 @@ export default function App() {
         tabs={tabs as Array<TabsType>}
         onTabChange={onTabChange}
         // defaultActiveTabIndex={1}
-        containerWidth={screenWidth}
-        tabBarBackground={'#fff'}
+        containerWidth={screenWidth - 20}
         defaultActiveTabIndex={0}
+        // tabBarContainerBackground="red"
         // transitionSpeed={100}
+        // circleFillColor="red"
       />
     </View>
   );
