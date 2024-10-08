@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { StyleSheet, Text, Dimensions, Pressable } from 'react-native';
+import { StyleSheet, Dimensions, Pressable, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
+  FadeIn,
 } from 'react-native-reanimated';
 import { getPathXCenterByIndex } from './TabBar';
 
@@ -11,22 +12,32 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 export type TabItemsProps = {
   label: string;
-  icon: string;
+  activeIcon: JSX.Element;
+  inactiveIcon: JSX.Element;
   index: number;
   activeIndex: number;
   onTabPress: () => void;
   containerWidth: number;
   curvedPaths: any;
+  currentIndex: number;
 };
 
-const ICON_SIZE = 25;
+const ICON_SIZE = 30;
 const LABEL_WIDTH = SCREEN_WIDTH / 4;
 
 export const TabItem = (props: TabItemsProps) => {
-  const { curvedPaths, index, activeIndex = 1, label, onTabPress } = props;
+  const {
+    curvedPaths,
+    index,
+    activeIndex = 1,
+    label,
+    onTabPress,
+    activeIcon,
+    currentIndex,
+    inactiveIcon,
+  } = props;
   const animatedActiveIndex = useSharedValue(activeIndex);
   const iconPosition = getPathXCenterByIndex(curvedPaths, index);
-  const labelPosition = getPathXCenterByIndex(curvedPaths, index);
 
   const tabStyle = useAnimatedStyle(() => {
     const translateY = animatedActiveIndex.value - 1 === index ? 20 : 20;
@@ -40,15 +51,7 @@ export const TabItem = (props: TabItemsProps) => {
       ],
     };
   });
-  const labelContainerStyle = useAnimatedStyle(() => {
-    const translateY = animatedActiveIndex.value === index ? 36 : 100;
-    return {
-      transform: [
-        { translateY: withTiming(translateY) },
-        { translateX: labelPosition - LABEL_WIDTH / 2 },
-      ],
-    };
-  });
+
   const iconColor = useSharedValue(
     activeIndex === index + 1 ? 'white' : 'rgba(128,128,128,0.8)'
   );
@@ -63,30 +66,33 @@ export const TabItem = (props: TabItemsProps) => {
     }
   }, [activeIndex, animatedActiveIndex, iconColor, index]);
 
-  // const animatedIconProps = useAnimatedProps(() => ({
-  //   color: iconColor.value,
-  // }));
-
   return (
     <>
-      <Animated.View style={[tabStyle]}>
-        <Pressable
-          testID={`tab${label}`}
-          //Increasing touchable Area
-          hitSlop={{ top: 30, bottom: 30, left: 50, right: 50 }}
-          onPress={onTabPress}
-        >
-          {/* <AnimatedIcon
-            name={icon}
-            size={25}
-            animatedProps={animatedIconProps}
-          /> */}
-          <Text style={styles.label}>Icon</Text>
-        </Pressable>
-      </Animated.View>
-      {/* <Animated.View style={[labelContainerStyle, styles.labelContainer]}>
-        <Text style={styles.label}>{label}</Text>
-      </Animated.View> */}
+      {currentIndex === index ? (
+        <Animated.View style={[tabStyle, styles.tabItem, { bottom: 25 }]}>
+          <Pressable
+            testID={`tab${label}`}
+            //Increasing touchable Area
+            hitSlop={{ top: 30, bottom: 30, left: 50, right: 50 }}
+            onPress={onTabPress}
+          >
+            <Animated.View entering={FadeIn.delay(300)}>
+              {activeIcon}
+            </Animated.View>
+          </Pressable>
+        </Animated.View>
+      ) : (
+        <Animated.View style={[tabStyle, styles.tabItem]}>
+          <Pressable
+            testID={`tab${label}`}
+            //Increasing touchable Area
+            hitSlop={{ top: 30, bottom: 30, left: 50, right: 50 }}
+            onPress={onTabPress}
+          >
+            <View>{inactiveIcon}</View>
+          </Pressable>
+        </Animated.View>
+      )}
     </>
   );
 };
@@ -101,4 +107,5 @@ const styles = StyleSheet.create({
     color: 'rgba(128,128,128,0.8)',
     fontSize: 17,
   },
+  tabItem: {},
 });

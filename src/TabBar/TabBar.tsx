@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useMemo, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { curveBasis, line } from 'd3-shape';
 import { parse, interpolatePath } from 'react-native-redash';
 import Animated, {
@@ -23,8 +23,8 @@ type GenerateSvgPath = (
 
 export interface TabsType {
   name: string;
-  activeIcon?: JSX.Element;
-  inactiveIcon?: JSX.Element;
+  activeIcon: JSX.Element;
+  inactiveIcon: JSX.Element;
   activeTintColor?: string;
   inactiveTintColor?: string;
 }
@@ -98,7 +98,11 @@ export const TabBar = (props: TabBarProps) => {
     tabBarBackground,
   } = props;
 
-  const numOfTabs = useMemo(() => tabs.length, [tabs.length]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const numOfTabs = useMemo(
+    () => (tabs.length > 2 ? tabs.length : 3),
+    [tabs.length]
+  );
   const containerPath = useMemo(() => {
     return `M0,0L${containerWidth},0L${containerWidth},0L${containerWidth},${TAB_BAR_HEIGHT}L0,${TAB_BAR_HEIGHT}L0,0`;
   }, [containerWidth]);
@@ -134,8 +138,23 @@ export const TabBar = (props: TabBarProps) => {
   });
 
   const handleTabPress = (index: number) => {
-    progress.value = withTiming(index);
+    progress.value = withTiming(index + 1);
+    setCurrentIndex(index);
   };
+
+  if (tabs.length > 5) {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text>You can add maximum five tabs</Text>
+      </View>
+    );
+  } else if (tabs.length < 2) {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text>Please add tab data</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={[styles.tabBarContainer]}>
@@ -164,17 +183,19 @@ export const TabBar = (props: TabBarProps) => {
             <TabItem
               key={index.toString()}
               label={val.name as string}
-              icon={'test'}
+              activeIcon={val.activeIcon}
+              inactiveIcon={val.inactiveIcon}
               activeIndex={1}
               index={index}
               onTabPress={() => {
-                handleTabPress(index + 1);
+                handleTabPress(index);
                 if (val !== undefined) {
                   onTabChange(val, index);
                 }
               }}
               containerWidth={containerWidth}
               curvedPaths={curvedPaths}
+              currentIndex={currentIndex}
             />
           );
         })}
@@ -201,5 +222,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowOffset: { width: 0, height: 3 },
+  },
+  emptyContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: TAB_BAR_HEIGHT,
   },
 });
