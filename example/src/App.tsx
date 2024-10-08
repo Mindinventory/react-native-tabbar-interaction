@@ -1,39 +1,29 @@
 import { useCallback, useMemo, useRef } from 'react';
 import { StyleSheet, View, Text, Dimensions, FlatList } from 'react-native';
-import { TabBar } from 'react-native-bottom-tab-bar';
+import { TabBar, type TabsType } from 'react-native-bottom-tab-bar';
 
 const { width: screenWidth } = Dimensions.get('window');
-interface TabDataType {
-  name: string;
-  id: number;
-  bgColor: string;
-}
 
-const tabData: Array<TabDataType> = [
+const tabData: Array<TabsType> = [
   {
     name: 'Home',
-    id: 1,
-    bgColor: '#FFC0C7',
+    activeTintColor: '#FFC0C7',
   },
   {
     name: 'Cart',
-    id: 2,
-    bgColor: '#FF7128',
+    activeTintColor: '#FF7128',
   },
   {
     name: 'Search',
-    id: 3,
-    bgColor: '#0088cc',
+    activeTintColor: '#0088cc',
   },
   {
     name: 'Profile',
-    id: 4,
-    bgColor: '#ff6666',
+    activeTintColor: '#ff6666',
   },
   // {
   //   name: 'Setting',
-  //   id: 5,
-  // bgColor: '#66ff99'
+  //   activeTintColor: '#66ff99',
   // },
 ];
 
@@ -41,7 +31,7 @@ export default function App() {
   const tabs = useMemo(() => tabData, []);
   const flatListRef = useRef<FlatList>(null);
 
-  const onTabChange = useCallback((_item: TabDataType, index: number) => {
+  const onTabChange = useCallback((_item: TabsType, index: number) => {
     flatListRef.current?.scrollToIndex({
       animated: true,
       index: index,
@@ -53,14 +43,14 @@ export default function App() {
       <FlatList
         ref={flatListRef}
         data={tabs}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }: { item: TabDataType }) => {
+        keyExtractor={(item) => item.name}
+        renderItem={({ item }: { item: TabsType }) => {
           return (
             <View
               style={[
                 styles.slide,
                 {
-                  backgroundColor: item.bgColor,
+                  backgroundColor: item.activeTintColor,
                 },
               ]}
             >
@@ -75,7 +65,7 @@ export default function App() {
         showsHorizontalScrollIndicator={false}
       />
       <TabBar
-        tabs={tabs as Array<TabDataType>}
+        tabs={tabs as Array<TabsType>}
         onTabChange={onTabChange}
         // defaultActiveTabIndex={1}
         containerWidth={screenWidth}

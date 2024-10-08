@@ -21,8 +21,16 @@ type GenerateSvgPath = (
   numOfTabs: number
 ) => string;
 
-export interface TabBarProps<T> {
-  tabs: Array<T>;
+export interface TabsType {
+  name: string;
+  activeIcon?: JSX.Element;
+  inactiveIcon?: JSX.Element;
+  activeTintColor?: string;
+  inactiveTintColor?: string;
+}
+
+export interface TabBarProps {
+  tabs: Array<TabsType>;
   // containerTopRightRadius?: number;
   tabBarBackground: string;
   // tabBarContainerBackground: string;
@@ -33,7 +41,7 @@ export interface TabBarProps<T> {
   // containerBottomRightRadius?: number;
   activeTabBackground?: string;
   // labelStyle?: TextStyle;
-  onTabChange: (tab: T, index: number) => void;
+  onTabChange: (tab: TabsType, index: number) => void;
   defaultActiveTabIndex?: number;
   // transitionSpeed?: number;
 }
@@ -80,7 +88,7 @@ export const getPathXCenterByIndex = (tabPaths: any[], index: number) => {
   return centerX;
 };
 
-export const TabBar = <T,>(props: TabBarProps<T>) => {
+export const TabBar = (props: TabBarProps) => {
   const {
     tabs,
     // activeTabBackground,
