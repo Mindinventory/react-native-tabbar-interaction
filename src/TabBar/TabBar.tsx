@@ -33,7 +33,7 @@ export interface TabBarProps<T> {
   // containerBottomRightRadius?: number;
   activeTabBackground?: string;
   // labelStyle?: TextStyle;
-  onTabChange?: (tab: T | undefined) => void;
+  onTabChange: (tab: T, index: number) => void;
   defaultActiveTabIndex?: number;
   // transitionSpeed?: number;
 }
@@ -162,7 +162,7 @@ export const TabBar = <T,>(props: TabBarProps<T>) => {
               onTabPress={() => {
                 handleTabPress(index + 1);
                 if (val !== undefined) {
-                  onTabChange(val);
+                  onTabChange(val, index);
                 }
               }}
               containerWidth={containerWidth}
