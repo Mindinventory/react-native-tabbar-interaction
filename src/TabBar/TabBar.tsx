@@ -100,10 +100,10 @@ export const TabBar = (props: TabBarProps) => {
     tabBarContainerBackground,
     circleFillColor,
     containerBottomSpace,
-    // containerTopRightRadius,
-    // containerTopLeftRadius,
-    // containerBottomLeftRadius,
-    // containerBottomRightRadius,
+    containerTopRightRadius = 0,
+    containerTopLeftRadius = 0,
+    containerBottomLeftRadius = 0,
+    containerBottomRightRadius = 0,
     defaultActiveTabIndex,
     transitionSpeed,
   } = props;
@@ -114,8 +114,24 @@ export const TabBar = (props: TabBarProps) => {
     [tabs.length]
   );
   const containerPath = useMemo(() => {
-    return `M0,0L${containerWidth},0L${containerWidth},0L${containerWidth},${TAB_BAR_HEIGHT}L0,${TAB_BAR_HEIGHT}L0,0`;
-  }, [containerWidth]);
+    // return `M0,0L${containerWidth},0L${containerWidth},0L${containerWidth},${TAB_BAR_HEIGHT}L0,${TAB_BAR_HEIGHT}L0,0`;
+    return `M${containerTopLeftRadius},0 
+  H${containerWidth - containerTopRightRadius} 
+  A${containerTopRightRadius},${containerTopRightRadius} 0 0 1 ${containerWidth},${containerTopRightRadius} 
+  V${TAB_BAR_HEIGHT - containerBottomRightRadius} 
+  A${containerBottomRightRadius},${containerBottomRightRadius} 0 0 1 ${containerWidth - containerBottomRightRadius},${TAB_BAR_HEIGHT} 
+  H${containerBottomLeftRadius} 
+  A${containerBottomLeftRadius},${containerBottomLeftRadius} 0 0 1 0,${TAB_BAR_HEIGHT - containerBottomLeftRadius} 
+  V${containerTopLeftRadius} 
+  A${containerTopLeftRadius},${containerTopLeftRadius} 0 0 1 ${containerTopLeftRadius},0 
+  Z`;
+  }, [
+    containerBottomLeftRadius,
+    containerBottomRightRadius,
+    containerTopLeftRadius,
+    containerTopRightRadius,
+    containerWidth,
+  ]);
 
   const curvedPaths = useMemo(() => {
     return Array.from({ length: numOfTabs }, (_, index) => {

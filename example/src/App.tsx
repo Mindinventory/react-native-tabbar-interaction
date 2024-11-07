@@ -158,6 +158,10 @@ export default function App() {
         // transitionSpeed={2000}
         // circleFillColor="red"
         containerBottomSpace={30}
+        // containerTopRightRadius={16}
+        // containerTopLeftRadius={16}
+        // containerBottomLeftRadius={16}
+        // containerBottomRightRadius={16}
       />
     </View>
   );
