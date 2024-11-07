@@ -63,18 +63,19 @@ const generateTabShapePath: GenerateSvgPath = (
   const tabX = adjustedWidth * position;
   const scaleGen = (tabContainerWidth / FIX_WIDTH) * 1;
   const SCALE = Number(scaleGen.toFixed(2));
+  const radius = (adjustedHeight / 1.6) * SCALE; // Increase radius slightly
+
   const lineGenerator = line().curve(curveBasis);
-  const tab = lineGenerator([
-    [tabX - 100 * SCALE, 0],
-    [tabX - (65 + 35) * SCALE, 0],
-    [tabX - (50 - 10) * SCALE, -6 * SCALE],
-    [tabX - (50 - 15) * SCALE, (adjustedHeight - 14) * SCALE],
-    [tabX + (50 - 15) * SCALE, (adjustedHeight - 14) * SCALE],
-    [tabX + (50 - 10) * SCALE, -6 * SCALE],
-    [tabX + (65 + 35) * SCALE, 0],
-    [tabX + 100 * SCALE, 0],
+
+  const halfCircle = lineGenerator([
+    [tabX - radius, 0], // Start of left side of half-circle
+    [tabX - radius, radius / 1.2], // Control point for smoother, deeper transition
+    [tabX, radius * 1.4], // Higher point at the top for more depth
+    [tabX + radius, radius / 1.2], // Control point for smoother, deeper transition
+    [tabX + radius, 0], // End of right side of half-circle
   ]);
-  return `${tab}`;
+
+  return `${halfCircle}`;
 };
 
 export const getPathXCenter = (currentPath: string) => {
