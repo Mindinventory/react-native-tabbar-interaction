@@ -62,18 +62,18 @@ const activeSearch = (isPlay: boolean) => {
 //   );
 // };
 
-const activeUser = (isPlay: boolean) => {
-  return (
-    <View style={{ width: 40, height: 40 }}>
-      <LottieView
-        source={require(`../assets/user.json`)}
-        autoPlay={isPlay}
-        loop={false}
-        style={lottieIconStyle}
-      />
-    </View>
-  );
-};
+// const activeUser = (isPlay: boolean) => {
+//   return (
+//     <View style={{ width: 40, height: 40 }}>
+//       <LottieView
+//         source={require(`../assets/user.json`)}
+//         autoPlay={isPlay}
+//         loop={false}
+//         style={lottieIconStyle}
+//       />
+//     </View>
+//   );
+// };
 
 interface TabsDataType extends TabsType {
   activeTintColor: string;
@@ -152,12 +152,12 @@ export default function App() {
       <TabBar
         tabs={tabs as Array<TabsType>}
         onTabChange={onTabChange}
+        containerWidth={screenWidth - 30}
         // defaultActiveTabIndex={1}
-        containerWidth={screenWidth - 20}
-        defaultActiveTabIndex={0}
         // tabBarContainerBackground="red"
-        // transitionSpeed={100}
+        // transitionSpeed={2000}
         // circleFillColor="red"
+        containerBottomSpace={30}
       />
     </View>
   );

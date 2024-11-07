@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { StyleSheet, Dimensions, Pressable, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -20,10 +19,13 @@ export type TabItemsProps = {
   containerWidth: number;
   curvedPaths: any;
   currentIndex: number;
+  transitionSpeed?: number;
 };
 
 const ICON_SIZE = 30;
 const LABEL_WIDTH = SCREEN_WIDTH / 4;
+
+const TRANSITION_SPEED = 400;
 
 export const TabItem = (props: TabItemsProps) => {
   const {
@@ -35,6 +37,7 @@ export const TabItem = (props: TabItemsProps) => {
     activeIcon,
     currentIndex,
     inactiveIcon,
+    transitionSpeed,
   } = props;
   const animatedActiveIndex = useSharedValue(activeIndex);
   const iconPosition = getPathXCenterByIndex(curvedPaths, index);
@@ -46,37 +49,48 @@ export const TabItem = (props: TabItemsProps) => {
       width: ICON_SIZE,
       height: ICON_SIZE,
       transform: [
-        { translateY: withTiming(translateY) },
+        {
+          translateY: withTiming(translateY),
+        },
         { translateX: iconPositionX - ICON_SIZE / 2 },
       ],
     };
   });
 
-  const iconColor = useSharedValue(
-    activeIndex === index + 1 ? 'white' : 'rgba(128,128,128,0.8)'
-  );
+  // const iconColor = useSharedValue(
+  //   activeIndex === index + 1 ? 'white' : 'rgba(128,128,128,0.8)'
+  // );
 
-  //Adjust Icon color for this first render
-  useEffect(() => {
-    animatedActiveIndex.value = activeIndex;
-    if (activeIndex === index + 1) {
-      iconColor.value = withTiming('white');
-    } else {
-      iconColor.value = withTiming('rgba(128,128,128,0.8)');
-    }
-  }, [activeIndex, animatedActiveIndex, iconColor, index]);
+  // //Adjust Icon color for this first render
+  // useEffect(() => {
+  //   animatedActiveIndex.value = activeIndex;
+  //   if (activeIndex === index + 1) {
+  //     iconColor.value = withTiming('white', {
+  //       duration: transitionSpeed ? transitionSpeed : TRANSITION_SPEED,
+  //     });
+  //   } else {
+  //     iconColor.value = withTiming('rgba(128,128,128,0.8)', {
+  //       duration: transitionSpeed ? transitionSpeed : TRANSITION_SPEED,
+  //     });
+  //   }
+  // }, [activeIndex, animatedActiveIndex, iconColor, index, transitionSpeed]);
 
   return (
     <>
       {currentIndex === index ? (
-        <Animated.View style={[tabStyle, styles.tabItem, { bottom: 25 }]}>
+        <Animated.View style={[tabStyle, styles.tabItem, styles.activeTabItem]}>
           <Pressable
             testID={`tab${label}`}
             //Increasing touchable Area
             hitSlop={{ top: 30, bottom: 30, left: 50, right: 50 }}
             onPress={onTabPress}
           >
-            <Animated.View entering={FadeIn.delay(300)}>
+            {/* <Animated.View entering={FadeIn.delay(300)}> */}
+            <Animated.View
+              entering={FadeIn.delay(
+                transitionSpeed ? transitionSpeed : TRANSITION_SPEED
+              )}
+            >
               {activeIcon}
             </Animated.View>
           </Pressable>
@@ -108,4 +122,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   tabItem: {},
+  activeTabItem: {
+    bottom: 25,
+  },
 });

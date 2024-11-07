@@ -1,5 +1,11 @@
-import { useMemo, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useMemo, useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 import { curveBasis, line } from 'd3-shape';
 import { parse, interpolatePath } from 'react-native-redash';
 import Animated, {
@@ -7,13 +13,14 @@ import Animated, {
   useAnimatedProps,
   useSharedValue,
   withTiming,
+  Easing,
 } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import { TabItem } from './TabItem';
 import AnimatedCircle from './AnimatedCircle';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
-
+const TRANSITION_SPEED = 500;
 type GenerateSvgPath = (
   position: number,
   adjustedHeight: number,
@@ -32,12 +39,15 @@ export interface TabBarProps {
   circleFillColor?: string;
   tabBarContainerBackground?: string;
   containerWidth: number;
-  // containerTopLeftRadius?: number;
-  // containerBottomLeftRadius?: number;
-  // containerBottomRightRadius?: number;
+  containerTopRightRadius?: number;
+  containerTopLeftRadius?: number;
+  containerBottomLeftRadius?: number;
+  containerBottomRightRadius?: number;
   activeTabBackground?: string;
   onTabChange: (tab: TabsType, index: number) => void;
   defaultActiveTabIndex?: number;
+  containerBottomSpace?: number;
+  transitionSpeed?: number;
 }
 const FIX_WIDTH = 380;
 
@@ -52,7 +62,6 @@ const generateTabShapePath: GenerateSvgPath = (
   const adjustedWidth = tabContainerWidth / numOfTabs;
   const tabX = adjustedWidth * position;
   const scaleGen = (tabContainerWidth / FIX_WIDTH) * 1;
-  // console.log('TEST: ', TEST.toFixed(2));
   const SCALE = Number(scaleGen.toFixed(2));
   const lineGenerator = line().curve(curveBasis);
   const tab = lineGenerator([
@@ -65,7 +74,6 @@ const generateTabShapePath: GenerateSvgPath = (
     [tabX + (65 + 35) * SCALE, 0],
     [tabX + 100 * SCALE, 0],
   ]);
-
   return `${tab}`;
 };
 
@@ -91,6 +99,13 @@ export const TabBar = (props: TabBarProps) => {
     containerWidth,
     tabBarContainerBackground,
     circleFillColor,
+    containerBottomSpace,
+    // containerTopRightRadius,
+    // containerTopLeftRadius,
+    // containerBottomLeftRadius,
+    // containerBottomRightRadius,
+    defaultActiveTabIndex,
+    transitionSpeed,
   } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -133,9 +148,29 @@ export const TabBar = (props: TabBarProps) => {
   });
 
   const handleTabPress = (index: number) => {
-    progress.value = withTiming(index + 1);
+    progress.value = withTiming(index + 1, {
+      duration: transitionSpeed ? transitionSpeed : TRANSITION_SPEED,
+      easing: Easing.linear,
+    });
     setCurrentIndex(index);
   };
+
+  useEffect(() => {
+    if (defaultActiveTabIndex !== undefined) {
+      progress.value = withTiming(defaultActiveTabIndex + 1, {
+        duration: transitionSpeed ? transitionSpeed : TRANSITION_SPEED,
+      });
+      setCurrentIndex(defaultActiveTabIndex);
+    }
+  }, [defaultActiveTabIndex, progress, transitionSpeed]);
+
+  const tabBarContainerStyle = useMemo((): StyleProp<ViewStyle> => {
+    return {
+      bottom: containerBottomSpace ? containerBottomSpace : 0,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+    };
+  }, [containerBottomSpace]);
 
   if (tabs.length > 5) {
     return (
@@ -152,13 +187,12 @@ export const TabBar = (props: TabBarProps) => {
   }
 
   return (
-    <View style={[styles.tabBarContainer]}>
+    <View style={[styles.tabBarContainer, tabBarContainerStyle]}>
       <Svg
         width={containerWidth}
         height={TAB_BAR_HEIGHT}
         style={styles.shadowMd}
       >
-        {/* transparent */}
         <AnimatedPath
           fill={tabBarContainerBackground ? tabBarContainerBackground : '#fff'}
           animatedProps={animatedProps}
@@ -183,7 +217,7 @@ export const TabBar = (props: TabBarProps) => {
               label={val.name as string}
               activeIcon={val.activeIcon}
               inactiveIcon={val.inactiveIcon}
-              activeIndex={1}
+              activeIndex={defaultActiveTabIndex ? defaultActiveTabIndex : 1}
               index={index}
               onTabPress={() => {
                 handleTabPress(index);
@@ -194,6 +228,7 @@ export const TabBar = (props: TabBarProps) => {
               containerWidth={containerWidth}
               curvedPaths={curvedPaths}
               currentIndex={currentIndex}
+              transitionSpeed={transitionSpeed}
             />
           );
         })}
@@ -205,15 +240,17 @@ export const TabBar = (props: TabBarProps) => {
 const styles = StyleSheet.create({
   tabBarContainer: {
     position: 'absolute',
-    bottom: 0,
     zIndex: 2,
     marginHorizontal: 'auto',
     alignSelf: 'center',
+    bottom: 0,
+    borderBottomLeftRadius: 30,
   },
   tabItemsContainer: {
     position: 'absolute',
     flexDirection: 'row',
     width: '100%',
+    overflow: 'hidden',
   },
   shadowMd: {
     elevation: 3,
