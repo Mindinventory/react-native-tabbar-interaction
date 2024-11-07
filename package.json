@@ -1,6 +1,6 @@
 {
-  "name": "react-native-bottom-tab-bar",
-  "version": "0.1.0",
+  "name": "@mindinventory/react-native-tab-bar-interaction",
+  "version": "3.0.0",
   "description": "description",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -46,17 +46,18 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "basic-components",
+    "Tabbar",
+    "react-native-tabbar"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ankitpmi/react-native-bottom-tab-bar.git"
+    "url": "git+ssh://git@github.com/Mindinventory/react-native-tab-bar-interaction.git"
   },
-  "author": "Ankit Prajapati <ankit.prajapati@mindinventory.com> (https://github.com/ankitpmi)",
+  "author": "Mindinventory",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ankitpmi/react-native-bottom-tab-bar/issues"
+    "url": "https://github.com/Mindinventory/react-native-tab-bar-interaction#readme"
   },
   "homepage": "https://github.com/ankitpmi/react-native-bottom-tab-bar#readme",
   "publishConfig": {
