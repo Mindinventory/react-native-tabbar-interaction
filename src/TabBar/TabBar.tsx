@@ -43,7 +43,7 @@ export interface TabBarProps {
   containerTopLeftRadius?: number;
   containerBottomLeftRadius?: number;
   containerBottomRightRadius?: number;
-  activeTabBackground?: string;
+  // activeTabBackground?: string;
   onTabChange: (tab: TabsType, index: number) => void;
   defaultActiveTabIndex?: number;
   containerBottomSpace?: number;

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-bottom-tab-bar": ["./src/index"]
+      "@mindinventory/react-native-tab-bar-interaction": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

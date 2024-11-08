@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useRef } from 'react';
 import { StyleSheet, View, Text, Dimensions, FlatList } from 'react-native';
-import { TabBar, type TabsType } from 'react-native-bottom-tab-bar';
+import { TabBar, type TabsType } from '@mindinventory/react-native-tab-bar-interaction';
 import LottieView from 'lottie-react-native';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -49,32 +49,6 @@ const activeSearch = (isPlay: boolean) => {
   );
 };
 
-// const activeSetting = (isPlay: boolean) => {
-//   return (
-//     <View style={{ width: 40, height: 40 }}>
-//       <LottieView
-//         source={require(`../assets/setting.json`)}
-//         autoPlay={isPlay}
-//         loop={false}
-//         style={lottieIconStyle}
-//       />
-//     </View>
-//   );
-// };
-
-// const activeUser = (isPlay: boolean) => {
-//   return (
-//     <View style={{ width: 40, height: 40 }}>
-//       <LottieView
-//         source={require(`../assets/user.json`)}
-//         autoPlay={isPlay}
-//         loop={false}
-//         style={lottieIconStyle}
-//       />
-//     </View>
-//   );
-// };
-
 interface TabsDataType extends TabsType {
   activeTintColor: string;
 }
@@ -96,25 +70,12 @@ const tabData: Array<TabsDataType> = [
     activeTintColor: '#0088cc',
     activeIcon: activeSearch(true),
     inactiveIcon: activeSearch(false),
-  },
-  // {
-  //   name: 'Profile',
-  //   activeTintColor: '#ff6666',
-  //   activeIcon: activeUser(true),
-  //   inactiveIcon: activeUser(false),
-  // },
-  // {
-  //   name: 'Setting',
-  //   activeTintColor: '#66ff99',
-  //   activeIcon: activeSetting(true),
-  //   inactiveIcon: activeSetting(false),
-  // },
+  }, 
 ];
 
 export default function App() {
   const tabs = useMemo(() => tabData, []);
   const flatListRef = useRef<FlatList>(null);
-  // const animation = useRef<LottieView>(null);
 
   const onTabChange = useCallback((_item: TabsType, index: number) => {
     flatListRef.current?.scrollToIndex({
@@ -152,16 +113,8 @@ export default function App() {
       <TabBar
         tabs={tabs as Array<TabsType>}
         onTabChange={onTabChange}
-        containerWidth={screenWidth - 30}
-        // defaultActiveTabIndex={1}
-        // tabBarContainerBackground="red"
-        // transitionSpeed={2000}
-        // circleFillColor="red"
-        containerBottomSpace={30}
-        // containerTopRightRadius={16}
-        // containerTopLeftRadius={16}
-        // containerBottomLeftRadius={16}
-        // containerBottomRightRadius={16}
+        containerWidth={screenWidth - 30}        
+        containerBottomSpace={30}        
       />
     </View>
   );

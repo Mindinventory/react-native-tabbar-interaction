@@ -1,7 +1,7 @@
 {
   "name": "@mindinventory/react-native-tab-bar-interaction",
   "version": "3.0.0",
-  "description": "description",
+  "description": "A tabbar component for React Native",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -36,7 +36,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-bottom-tab-bar-example",
+    "example": "yarn workspace react-native-tab-bar-interaction-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -57,9 +57,9 @@
   "author": "Mindinventory",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mindinventory/react-native-tab-bar-interaction#readme"
+    "url": "https://github.com/Mindinventory/react-native-tab-bar-interaction/issues"
   },
-  "homepage": "https://github.com/ankitpmi/react-native-bottom-tab-bar#readme",
+  "homepage": "https://github.com/Mindinventory/react-native-tab-bar-interaction#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -191,3 +191,4 @@
     "react-native-svg": "^15.7.1"
   }
 }
+ 
