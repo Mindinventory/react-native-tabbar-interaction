@@ -5943,15 +5943,15 @@ __metadata:
   linkType: hard
 
 "cross-spawn@npm:^6.0.0":
-  version: 6.0.5
-  resolution: "cross-spawn@npm:6.0.5"
+  version: 6.0.6
+  resolution: "cross-spawn@npm:6.0.6"
   dependencies:
     nice-try: ^1.0.4
     path-key: ^2.0.1
     semver: ^5.5.0
     shebang-command: ^1.2.0
     which: ^1.2.9
-  checksum: f893bb0d96cd3d5751d04e67145bdddf25f99449531a72e82dcbbd42796bbc8268c1076c6b3ea51d4d455839902804b94bc45dfb37ecbb32ea8e54a6741c3ab9
+  checksum: a6e2e5b04a0e0f806c1df45f92cd079b65f95fbe5a7650ee1ab60318c33a6c156a8a2f8b6898f57764f7363ec599a0625e9855dfa78d52d2d73dbd32eb11c25e
   languageName: node
   linkType: hard
 
@@ -12788,24 +12788,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-bottom-tab-bar-example@workspace:example":
-  version: 0.0.0-use.local
-  resolution: "react-native-bottom-tab-bar-example@workspace:example"
-  dependencies:
-    "@babel/core": ^7.20.0
-    "@expo/metro-runtime": ~3.2.3
-    expo: ~51.0.38
-    expo-status-bar: ~1.12.1
-    lottie-react-native: 6.7.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-native: 0.74.5
-    react-native-builder-bob: ^0.30.2
-    react-native-reanimated: ~3.10.1
-    react-native-web: ~0.19.10
-  languageName: unknown
-  linkType: soft
-
 "react-native-builder-bob@npm:^0.30.2":
   version: 0.30.2
   resolution: "react-native-builder-bob@npm:0.30.2"
@@ -12887,6 +12869,24 @@ __metadata:
   checksum: ad7f711883ee45673486fe6bedadf8490bb06fd36e6de5d2f00898e6ac6c61ed34a5a8f7e6b25684c93e44ab51f9ea76642abfcca6a29462bc525f97204e6f41
   languageName: node
   linkType: hard
+
+"react-native-tab-bar-interaction-example@workspace:example":
+  version: 0.0.0-use.local
+  resolution: "react-native-tab-bar-interaction-example@workspace:example"
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@expo/metro-runtime": ~3.2.3
+    expo: ~51.0.38
+    expo-status-bar: ~1.12.1
+    lottie-react-native: 6.7.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-native: 0.74.5
+    react-native-builder-bob: ^0.30.2
+    react-native-reanimated: ~3.10.1
+    react-native-web: ~0.19.10
+  languageName: unknown
+  linkType: soft
 
 "react-native-web@npm:~0.19.10":
   version: 0.19.12
