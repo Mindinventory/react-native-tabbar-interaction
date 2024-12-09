@@ -20,7 +20,7 @@ import { TabItem } from './TabItem';
 import AnimatedCircle from './AnimatedCircle';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
-const TRANSITION_SPEED = 500;
+const TRANSITION_SPEED = 300;
 type GenerateSvgPath = (
   position: number,
   adjustedHeight: number,
@@ -101,10 +101,10 @@ export const TabBar = (props: TabBarProps) => {
     tabBarContainerBackground,
     circleFillColor,
     containerBottomSpace,
-    containerTopRightRadius = 0,
-    containerTopLeftRadius = 0,
-    containerBottomLeftRadius = 0,
-    containerBottomRightRadius = 0,
+    containerTopRightRadius = 10,
+    containerTopLeftRadius = 10,
+    containerBottomLeftRadius = 25,
+    containerBottomRightRadius = 25,
     defaultActiveTabIndex,
     transitionSpeed,
   } = props;
