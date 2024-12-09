@@ -1,36 +1,27 @@
 {
-  "name": "tabbarinteraction",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-native-tab-bar-interaction-example",
+  "version": "1.0.0",
+  "main": "expo/AppEntry.js",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
   },
   "dependencies": {
-    "lottie-ios": "3.2.3",
-    "lottie-react-native": "4.0.3",
-    "react": "17.0.1",
-    "react-native": "0.64.2",
-    "react-native-svg": "12.1.1",
-    "react-native-svg-animations": "0.2.6",
-    "react-native-vector-icons": "8.1.0"
+    "@expo/metro-runtime": "~3.2.3",
+    "expo": "~51.0.38",
+    "expo-status-bar": "~1.12.1",
+    "lottie-react-native": "6.7.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.74.5",
+    "react-native-reanimated": "~3.10.1",
+    "react-native-web": "~0.19.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/runtime": "^7.12.5",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "babel-jest": "^26.6.3",
-    "babel-plugin-inline-import": "^3.0.0",
-    "eslint": "7.14.0",
-    "jest": "^26.6.3",
-    "metro-react-native-babel-preset": "^0.64.0",
-    "react-native-svg-transformer": "^0.14.3",
-    "react-test-renderer": "17.0.1"
+    "@babel/core": "^7.20.0",
+    "react-native-builder-bob": "^0.30.2"
   },
-  "jest": {
-    "preset": "react-native"
-  }
+  "private": true
 }

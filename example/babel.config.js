@@ -1,11 +1,18 @@
-module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
-  "plugins": [
-    [
-      "babel-plugin-inline-import",
-      {
-        "extensions": [".svg"]
-      }
-    ]
-  ]
+const path = require('path');
+const { getConfig } = require('react-native-builder-bob/babel-config');
+const pkg = require('../package.json');
+
+const root = path.resolve(__dirname, '..');
+
+module.exports = function (api) {
+  api.cache(true);
+
+  return getConfig(
+    {
+      presets: ['babel-preset-expo'],
+      plugins: ['react-native-reanimated/plugin'],
+    },
+
+    { root, pkg }
+  );
 };

@@ -1,32 +1,18 @@
+const path = require('path');
+const { getDefaultConfig } = require('@expo/metro-config');
+const { getConfig } = require('react-native-builder-bob/metro-config');
+const pkg = require('../package.json');
+
+const root = path.resolve(__dirname, '..');
+
 /**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
  *
- * @format
+ * @type {import('metro-config').MetroConfig}
  */
-
-
- const { getDefaultConfig } = require('metro-config');
-
- module.exports = (async () => {
-   const {
-     resolver: { sourceExts, assetExts },
-   } = await getDefaultConfig();
-   return {
-     transformer: {
-       babelTransformerPath: require.resolve('react-native-svg-transformer'),
-       getTransformOptions: async () => ({
-         transform: {
-           experimentalImportSupport: false,
-           inlineRequires: true,
-         },
-       }),
-     },
-     resolver: {
-       assetExts: assetExts.filter(ext => ext !== 'svg'),
-       sourceExts: [...sourceExts, 'svg'],
-    
-     },
-    
-   };
- })();
+module.exports = getConfig(getDefaultConfig(__dirname), {
+  root,
+  pkg,
+  project: __dirname,
+});

@@ -20,6 +20,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+.expo
 
 # Android/IntelliJ
 #
@@ -58,3 +59,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Yarn 
+.yarn

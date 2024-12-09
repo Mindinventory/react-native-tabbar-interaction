@@ -1,4 +1,4 @@
-# React Native Tabbar Interaction  [![](https://img.shields.io/npm/v/@mindinventory/react-native-tab-bar-interaction.svg)](https://www.npmjs.com/package/@mindinventory/react-native-tab-bar-interaction)
+# React Native Tabbar Interaction [![](https://img.shields.io/npm/v/@mindinventory/react-native-tab-bar-interaction.svg)](https://www.npmjs.com/package/@mindinventory/react-native-tab-bar-interaction)
 
 Beautiful Tabbar Interaction with Sliding Inset FABs,
 made for React Native with RTL support.
@@ -22,41 +22,10 @@ using yarn:
 ```
 yarn add @mindinventory/react-native-tab-bar-interaction
 ```
+
 ## Dependencies
 
-- `react-native-svg`
-- `react-native-svg-transformer`
-
-## Configure dependencies in file metro.config.js update this module export.
-
-```
-const { getDefaultConfig } = require("metro-config");
-
-module.exports = (async () => {
-  const {
-    resolver: { sourceExts, assetExts }
-  } = await getDefaultConfig();
-  return {
-    transformer: {
-      babelTransformerPath: require.resolve("react-native-svg-transformer")
-    },
-    resolver: {
-      assetExts: assetExts.filter(ext => ext !== "svg"),
-      sourceExts: [...sourceExts, "svg"]
-    }
-  };
-})();
-
-```
-## create one declarations.d.ts in your root directory.
-```
-declare module "*.svg" {
-  import React from 'react';
-  import { SvgProps } from "react-native-svg";
-  const content: React.FC<SvgProps>;
-  export default content;
-}
-```
+- `react-native-reanimated`
 
 ### Supported platform
 
@@ -103,11 +72,8 @@ const tabs = [
 return (
   <Tabbar
     tabs={tabs}
-    tabBarContainerBackground='#6699ff'
-    tabBarBackground='#fff'
-    activeTabBackground='#6699ff'
-    labelStyle={{ color: '#4d4d4d', fontWeight: '600', fontSize: 11 }}
-    onTabChange={() => console.log('Tab changed')}
+    containerWidth={350}
+    onTabChange={(tab: TabsType, index: number) => console.log('Tab changed')}
   />
 );
 
@@ -121,18 +87,16 @@ return (
 | -------------------------- | -------- | ----------------- | -------------------------------------------------------------------- |
 | tabs                       | array    | required          | It is user for showing icon and label.                               |
 | tabBarContainerBackground  | string   | optional          | Use for change tabBar container color.                               |
-| tabBarBackground           | string   | required          | Use for change tabBar background color.                              |
-| activeTabBackground        | string   | optional          | Use for change active tab background color.                          |
-| labelStyle                 | style    | optional          | Use for apply style on tab label.                                    |
-| onTabChange                | function | optional          | Use to perform any action when click on tab.                         |
+| onTabChange                | function | required          | Use to perform any action when click on tab.                         |
 | containerBottomSpace       | number   | optional          | Use to add space between tabBar container and from bottom of screen. |
-| containerWidth             | number   | optional          | Use for set width of tabBar container                                |
+| containerWidth             | number   | required          | Use for set width of tabBar container                                |
 | containerTopRightRadius    | number   | optional          | Use for add top right radius on tabBar container                     |
 | containerTopLeftRadius     | number   | optional          | Use for add top left radius on tabBar container                      |
 | containerBottomLeftRadius  | number   | optional          | Use for add bottom left radius on tabBar container                   |
 | containerBottomRightRadius | number   | optional          | Use for add bottom right radius on tabBar container                  |
 | defaultActiveTabIndex      | number   | optional          | Use to set default active tab                                        |
 | transitionSpeed            | number   | optional          | Use to set transition speed                                          |
+| circleFillColor            | string   | optional          | Use to set background color for circle                               |
 
 ### tabs
 
@@ -141,13 +105,6 @@ return (
 | name         | string    | required          | use for showing tab label.                   |
 | activeIcon   | component | required          | Use for showing tab active icon/image.       |
 | inactiveIcon | component | required          | Use for showing tab inactiveIcon icon/image. |
-
-
-# Version Migration
-
-### Version: 2.2.2
-
-How to migrate version [**1.0.0** to **2.1.2+**](VERSION_MIGRATION.md).
 
 # LICENSE!
 
