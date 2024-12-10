@@ -1,8 +1,12 @@
 import { type FC } from 'react';
 import { StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+} from 'react-native-reanimated';
+
 type CircleProps = {
-  circleX: Animated.SharedValue<number>;
+  circleX: typeof useSharedValue;
   circleFillColor?: string;
 };
 const circleContainerSize = 56;
