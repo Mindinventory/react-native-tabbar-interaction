@@ -7619,11 +7619,11 @@ __metadata:
   linkType: hard
 
 "nanoid@npm:^3.3.7":
-  version: 3.3.7
-  resolution: "nanoid@npm:3.3.7"
+  version: 3.3.8
+  resolution: "nanoid@npm:3.3.8"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: d36c427e530713e4ac6567d488b489a36582ef89da1d6d4e3b87eded11eb10d7042a877958c6f104929809b2ab0bafa17652b076cdf84324aa75b30b722204f2
+  checksum: dfe0adbc0c77e9655b550c333075f51bb28cfc7568afbf3237249904f9c86c9aaaed1f113f0fddddba75673ee31c758c30c43d4414f014a52a7a626efc5958c9
   languageName: node
   linkType: hard
 
@@ -8505,24 +8505,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-bottom-tab-bar-example@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-native-bottom-tab-bar-example@workspace:."
-  dependencies:
-    "@babel/core": ^7.20.0
-    "@expo/metro-runtime": ~3.2.3
-    expo: ~51.0.38
-    expo-status-bar: ~1.12.1
-    lottie-react-native: 6.7.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-native: 0.74.5
-    react-native-builder-bob: ^0.30.2
-    react-native-reanimated: ~3.10.1
-    react-native-web: ~0.19.10
-  languageName: unknown
-  linkType: soft
-
 "react-native-builder-bob@npm:^0.30.2":
   version: 0.30.3
   resolution: "react-native-builder-bob@npm:0.30.3"
@@ -8574,6 +8556,24 @@ __metadata:
   checksum: b41808a122799806a524601e75620c8d79ebf8a0127f57fe370412f90471560005f65df8549fd8c39e627c58141a921c849fec9d263f481f153f0ddc90e4a5b6
   languageName: node
   linkType: hard
+
+"react-native-tab-bar-interaction-example@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "react-native-tab-bar-interaction-example@workspace:."
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@expo/metro-runtime": ~3.2.3
+    expo: ~51.0.38
+    expo-status-bar: ~1.12.1
+    lottie-react-native: 6.7.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-native: 0.74.5
+    react-native-builder-bob: ^0.30.2
+    react-native-reanimated: ~3.10.1
+    react-native-web: ~0.19.10
+  languageName: unknown
+  linkType: soft
 
 "react-native-web@npm:~0.19.10":
   version: 0.19.13
