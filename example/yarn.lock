@@ -5925,13 +5925,13 @@ __metadata:
   linkType: hard
 
 "image-size@npm:^1.0.2":
-  version: 1.1.1
-  resolution: "image-size@npm:1.1.1"
+  version: 1.2.1
+  resolution: "image-size@npm:1.2.1"
   dependencies:
     queue: 6.0.2
   bin:
     image-size: bin/image-size.js
-  checksum: 23b3a515dded89e7f967d52b885b430d6a5a903da954fce703130bfb6069d738d80e6588efd29acfaf5b6933424a56535aa7bf06867e4ebd0250c2ee51f19a4a
+  checksum: 8601ddd4edc1db16f097f5cf585c23214e29c3b8f4d8a8f8d59b8e3bae2338c8a5073236bfff421d8541091a98a38b802ed049203c745286a69d1aac4e5bc4c7
   languageName: node
   linkType: hard
 
@@ -8505,24 +8505,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-bottom-tab-bar-example@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-native-bottom-tab-bar-example@workspace:."
-  dependencies:
-    "@babel/core": ^7.20.0
-    "@expo/metro-runtime": ~3.2.3
-    expo: ~51.0.38
-    expo-status-bar: ~1.12.1
-    lottie-react-native: 6.7.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-native: 0.74.5
-    react-native-builder-bob: ^0.30.2
-    react-native-reanimated: ~3.10.1
-    react-native-web: ~0.19.10
-  languageName: unknown
-  linkType: soft
-
 "react-native-builder-bob@npm:^0.30.2":
   version: 0.30.3
   resolution: "react-native-builder-bob@npm:0.30.3"
@@ -8574,6 +8556,24 @@ __metadata:
   checksum: b41808a122799806a524601e75620c8d79ebf8a0127f57fe370412f90471560005f65df8549fd8c39e627c58141a921c849fec9d263f481f153f0ddc90e4a5b6
   languageName: node
   linkType: hard
+
+"react-native-tab-bar-interaction-example@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "react-native-tab-bar-interaction-example@workspace:."
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@expo/metro-runtime": ~3.2.3
+    expo: ~51.0.38
+    expo-status-bar: ~1.12.1
+    lottie-react-native: 6.7.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-native: 0.74.5
+    react-native-builder-bob: ^0.30.2
+    react-native-reanimated: ~3.10.1
+    react-native-web: ~0.19.10
+  languageName: unknown
+  linkType: soft
 
 "react-native-web@npm:~0.19.10":
   version: 0.19.13
