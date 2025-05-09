@@ -1,6 +1,6 @@
 {
   "name": "@mindinventory/react-native-tab-bar-interaction",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A tabbar component for React Native",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",

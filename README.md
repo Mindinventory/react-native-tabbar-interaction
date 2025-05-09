@@ -35,7 +35,10 @@ yarn add @mindinventory/react-native-tab-bar-interaction
 
 ```js
 
-import Tabbar from "@mindinventory/react-native-tab-bar-interaction";
+import {
+  TabBar,
+  TabsType,
+} from "@mindinventory/react-native-tab-bar-interaction";
 ...
 
 const tabs = [
@@ -69,7 +72,7 @@ const tabs = [
 ...
 
 return (
-  <Tabbar
+  <TabBar
     tabs={tabs}       
     containerWidth={350}    
     onTabChange={(tab: TabsType, index: number) => console.log('Tab changed')}
