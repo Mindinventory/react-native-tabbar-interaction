@@ -6927,9 +6927,9 @@ __metadata:
   linkType: hard
 
 "lodash@npm:^4.17.10, lodash@npm:^4.17.13, lodash@npm:^4.17.21":
-  version: 4.17.21
-  resolution: "lodash@npm:4.17.21"
-  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
+  version: 4.17.23
+  resolution: "lodash@npm:4.17.23"
+  checksum: 7daad39758a72872e94651630fbb54ba76868f904211089721a64516ce865506a759d9ad3d8ff22a2a49a50a09db5d27c36f22762d21766e47e3ba918d6d7bab
   languageName: node
   linkType: hard
 
@@ -8505,24 +8505,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-bottom-tab-bar-example@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-native-bottom-tab-bar-example@workspace:."
-  dependencies:
-    "@babel/core": ^7.20.0
-    "@expo/metro-runtime": ~3.2.3
-    expo: ~51.0.38
-    expo-status-bar: ~1.12.1
-    lottie-react-native: 6.7.0
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-native: 0.74.5
-    react-native-builder-bob: ^0.30.2
-    react-native-reanimated: ~3.10.1
-    react-native-web: ~0.19.10
-  languageName: unknown
-  linkType: soft
-
 "react-native-builder-bob@npm:^0.30.2":
   version: 0.30.3
   resolution: "react-native-builder-bob@npm:0.30.3"
@@ -8574,6 +8556,24 @@ __metadata:
   checksum: b41808a122799806a524601e75620c8d79ebf8a0127f57fe370412f90471560005f65df8549fd8c39e627c58141a921c849fec9d263f481f153f0ddc90e4a5b6
   languageName: node
   linkType: hard
+
+"react-native-tab-bar-interaction-example@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "react-native-tab-bar-interaction-example@workspace:."
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@expo/metro-runtime": ~3.2.3
+    expo: ~51.0.38
+    expo-status-bar: ~1.12.1
+    lottie-react-native: 6.7.0
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-native: 0.74.5
+    react-native-builder-bob: ^0.30.2
+    react-native-reanimated: ~3.10.1
+    react-native-web: ~0.19.10
+  languageName: unknown
+  linkType: soft
 
 "react-native-web@npm:~0.19.10":
   version: 0.19.13
